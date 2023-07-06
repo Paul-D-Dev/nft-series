@@ -46,18 +46,7 @@ $theme-dark: mat.define-dark-theme((
 @include mat.all-component-themes($theme-light);
 
 
-.light-theme {
-  @include mat.all-component-themes($theme-light);
-}
-
 .dark-theme {
-  @include mat.all-component-themes($theme-dark);
+  @include mat.all-component-colors($theme-dark);
 }
 
-@media (prefers-color-scheme: light) {
-  @include mat.all-component-themes($theme-light);
-}
-
-@media (prefers-color-scheme: dark) {
-  @include mat.all-component-themes($theme-dark);
-}
