@@ -37,7 +37,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles/themes/material-theme.scss",
+              "src/styles/_variables.scss"
             ],
             "scripts": []
           },
