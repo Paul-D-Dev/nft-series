@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { CardLinkComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardLinkComponent],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss']
 })
