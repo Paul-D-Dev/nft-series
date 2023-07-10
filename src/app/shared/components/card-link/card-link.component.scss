@@ -1,0 +1,34 @@
+// TODO resizing card when responsive
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 4px 16px;
+  max-width: 400px;
+  min-width: 200px;
+  width: clamp(200px, 100%, 400px);
+
+  &__image__container {
+    max-height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  &__content__details {
+    display: flex;
+    justify-content: space-between;
+
+    &__floor {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
