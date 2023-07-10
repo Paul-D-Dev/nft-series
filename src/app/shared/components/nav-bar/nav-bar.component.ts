@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,7 +15,7 @@ import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 })
 export class NavBarComponent {
   protected readonly Icons = Icons;
-
+  @Input() isActiveSideNav: boolean = false
   @Output() toggleSideNav = new EventEmitter();
 
 }

@@ -1,6 +1,6 @@
 <mat-toolbar class="nav toolbar__grid">
   <button type="button" mat-icon-button (click)="toggleSideNav.emit()">
-    <mat-icon>{{Icons.Menu}}</mat-icon>
+    <mat-icon>{{ isActiveSideNav ? Icons.Close : Icons.Menu}}</mat-icon>
   </button>
   <span>NFT Series</span>
   <div class="toolbar__icons">
