@@ -1,10 +1,5 @@
 .drawer__content {
   height: calc(100dvh - var(--nav-bar-height));
-
-  &__main {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
 
 .drawer__sidenav {
