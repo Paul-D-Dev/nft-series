@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
@@ -19,6 +19,7 @@ export class ThemeToggleComponent {
     this.themeService.initUserTheme();
   }
 
+  @Input() displayIcon = true;
   protected readonly Icons = Icons;
   isDarkTheme$: Observable<boolean> = this.themeService.userThemeIsDark$;
 
