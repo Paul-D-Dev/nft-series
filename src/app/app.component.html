@@ -1,9 +1,10 @@
-<mat-drawer-container [hasBackdrop]="true">
+<app-nav-bar [isActiveSideNav]="drawer.opened" (toggleSideNav)="drawer.toggle()"/>
+
+<mat-drawer-container [hasBackdrop]="true" class="">
   <mat-drawer #drawer mode="side" class="drawer__sidenav">
     data
   </mat-drawer>
   <mat-drawer-content class="drawer__content">
-    <app-nav-bar (toggleSideNav)="drawer.toggle()"></app-nav-bar>
 
     <router-outlet></router-outlet>
   </mat-drawer-content>
