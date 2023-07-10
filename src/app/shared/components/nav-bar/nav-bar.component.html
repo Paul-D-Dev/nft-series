@@ -1,9 +1,9 @@
-<mat-toolbar class="nav__toolbar__grid">
-  <button mat-icon-button (click)="toggleSideNav.emit()">
+<mat-toolbar class="nav toolbar__grid">
+  <button type="button" mat-icon-button (click)="toggleSideNav.emit()">
     <mat-icon>{{Icons.Menu}}</mat-icon>
   </button>
   <span>NFT Series</span>
-  <div class="nav__toolbar__icons">
+  <div class="toolbar__icons">
     <mat-icon>{{Icons.Wallet}}</mat-icon>
     <app-theme-toggle></app-theme-toggle>
   </div>

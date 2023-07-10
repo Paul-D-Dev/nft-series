@@ -8,3 +8,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.toolbar__grid {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+}
+
+.toolbar__icons {
+  display: flex;
+  gap: 0.5rem;
+}
