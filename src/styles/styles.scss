@@ -18,3 +18,8 @@ body {
   display: flex;
   gap: 0.5rem;
 }
+
+.container {
+  margin-inline: auto;
+  width: min(90%, 70.5rem);
+}
