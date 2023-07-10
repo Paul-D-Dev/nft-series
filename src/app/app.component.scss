@@ -1,3 +1,14 @@
 .drawer__content {
   height: 100dvh;
 }
+
+.drawer__sidenav {
+  width: 100dvw;
+}
+
+
+@media screen and (min-width: 37.5rem) {
+  .drawer__sidenav {
+    width: 20rem;
+  }
+}
