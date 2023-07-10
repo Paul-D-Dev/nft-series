@@ -1,8 +1,16 @@
 <app-nav-bar [isActiveSideNav]="drawer.opened" (toggleSideNav)="drawer.toggle()"/>
 
-<mat-drawer-container [hasBackdrop]="true" class="">
+<mat-drawer-container [hasBackdrop]="true">
   <mat-drawer #drawer mode="side" class="drawer__sidenav">
-    data
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListItemIcon>{{Icons.DarkMode}}</mat-icon>
+        <span>Night mode</span>
+        <span matListItemMeta>
+          <app-theme-toggle [displayIcon]="false"/>
+        </span>
+      </mat-list-item>
+    </mat-list>
   </mat-drawer>
   <mat-drawer-content class="drawer__content">
 

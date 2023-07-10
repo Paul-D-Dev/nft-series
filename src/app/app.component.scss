@@ -1,9 +1,13 @@
 .drawer__content {
-  height: 100dvh;
+  height: calc(100dvh - var(--nav-bar-height));
 }
 
 .drawer__sidenav {
   width: 100dvw;
+
+  .mdc-list-item--with-leading-icon .mdc-list-item__start {
+    margin-right: 1rem !important;
+  }
 }
 
 
