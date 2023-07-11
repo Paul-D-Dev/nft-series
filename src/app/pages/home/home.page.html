@@ -1,7 +1,11 @@
 <section>
 
   <div class="container">
-    <app-card-link></app-card-link>
+    <app-swiper [sliders]="cards">
+      <ng-template #templateSlide let-card>
+        <app-card-link [cardLinkData]="card"/>
+      </ng-template>
+    </app-swiper>
   </div>
 
 </section>
