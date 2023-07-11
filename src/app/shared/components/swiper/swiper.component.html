@@ -1,0 +1,8 @@
+<swiper-container>
+  <swiper-slide *ngFor="let slide of sliders">
+    <ng-container
+      [ngTemplateOutlet]="templateSlide"
+      [ngTemplateOutletContext]="{ $implicit: slide }"
+    />
+  </swiper-slide>
+</swiper-container>
