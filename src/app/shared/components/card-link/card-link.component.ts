@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { CardLink } from '../../interfaces';
 
 @Component({
   selector: 'app-card-link',
@@ -10,5 +11,5 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./card-link.component.scss']
 })
 export class CardLinkComponent {
-
+  @Input() cardLinkData!: CardLink
 }

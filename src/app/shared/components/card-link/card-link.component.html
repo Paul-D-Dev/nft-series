@@ -1,14 +1,14 @@
 <mat-card class="card">
   <a href="#">
     <div class="card__image__container">
-      <img mat-card-image src="https://picsum.photos/600" alt="ing">
+      <img mat-card-image [src]="cardLinkData.imgUrl" alt="ing">
     </div>
     <mat-card-content>
-      <p class="card__content__title">Stranger Things</p>
+      <p class="card__content__title">{{cardLinkData.title}}</p>
       <div class="card__content__details">
         <div class="card__content__details__floor">
           <span>Floor</span>
-          <span>0.09 ETH</span>
+          <span>{{cardLinkData.floor}} {{cardLinkData.devise}}</span>
         </div>
       </div>
     </mat-card-content>
