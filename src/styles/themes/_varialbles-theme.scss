@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $foreground: map.get($color-config, "foreground");
+
+  --clr-text: #{mat.get-color-from-palette($foreground, "text")};
+
+}
