@@ -1,4 +1,4 @@
-<swiper-container>
+<swiper-container appSwiper init="false" [config]="config">
   <swiper-slide *ngFor="let slide of sliders">
     <ng-container
       [ngTemplateOutlet]="templateSlide"
