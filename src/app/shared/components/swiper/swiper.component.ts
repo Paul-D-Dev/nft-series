@@ -17,17 +17,17 @@ export class SwiperComponent {
     navigation: true,
     spaceBetween: 16,
     breakpoints: {
-      640: {
+      '@0.75': {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 20,
       },
-      768: {
+      '@1': {
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 40,
       },
-      1024: {
+      '@1.50': {
         slidesPerView: 5,
         slidesPerGroup: 5,
         spaceBetween: 50,
