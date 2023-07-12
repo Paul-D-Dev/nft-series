@@ -15,5 +15,8 @@ export class HomePage {
     {title: 'Stranger Things', floor: 0.09, devise: 'ETH', imgUrl: 'https://picsum.photos/600'},
     {title: 'Stranger Things 2', floor: 1.35, devise: 'BSC', imgUrl: 'https://picsum.photos/600'},
     {title: 'Stranger Things 3', floor: 10.59, devise: 'POL', imgUrl: 'https://picsum.photos/600'},
+    {title: 'Stranger Things', floor: 0.09, devise: 'ETH', imgUrl: 'https://picsum.photos/600'},
+    {title: 'Stranger Things 2', floor: 1.35, devise: 'BSC', imgUrl: 'https://picsum.photos/600'},
+    {title: 'Stranger Things 3', floor: 10.59, devise: 'POL', imgUrl: 'https://picsum.photos/600'},
   ]
 }
