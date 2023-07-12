@@ -32,7 +32,14 @@ export class SwiperComponent {
         slidesPerGroup: 5,
         spaceBetween: 50,
       },
-    }
+    },
+    injectStyles: [
+      `
+        .swiper-button-next svg, .swiper-button-prev svg {
+           height: calc(var(--swiper-navigation-size) / 2);
+        }
+      `
+    ],
   }
   @Input() sliders: unknown[] = [];
 
