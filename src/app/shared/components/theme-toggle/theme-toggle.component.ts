@@ -23,5 +23,9 @@ export class ThemeToggleComponent {
   protected readonly Icons = Icons;
   isDarkTheme$: Observable<boolean> = this.themeService.userThemeIsDark$;
 
+  toggleTheme(bool: boolean) {
+    this.themeService.toggleUserTheme(bool);
+  }
+
 
 }
