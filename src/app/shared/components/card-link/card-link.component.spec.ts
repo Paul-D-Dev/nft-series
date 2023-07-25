@@ -44,17 +44,16 @@ describe('CardLinkComponent', () => {
   it('should render card content correctly', () => {
     const titleDe = elementDebug.query(By.css('.card__content__title'));
     const titleEl: HTMLElement = titleDe.nativeElement
-    expect(titleEl.textContent).toBe('Card Title');
+    expect(titleEl.textContent).toBe(mockCardData.title);
 
     const floorDe = elementDebug.query(By.css('.card__content__details__floor'));
     const floorEl: HTMLElement = floorDe.nativeElement;
     expect(floorEl.textContent).toContain('Floor');
-    expect(floorEl.textContent).toContain('0.01 ETH');
-    console.log(fixture.debugElement)
+    expect(floorEl.textContent).toContain(`${mockCardData.floor} ${mockCardData.devise}`);
 
     const imgDe = elementDebug.query(By.css('.mat-mdc-card-image'));
     const imgEl: HTMLImageElement = imgDe.nativeElement;
-    expect(imgEl.src).toContain('path/to/image.png');
+    expect(imgEl.src).toContain(mockCardData.imgUrl);
 
     const linkElement = fixture.nativeElement.querySelector('a');
     expect(linkElement.href).toContain('#');
