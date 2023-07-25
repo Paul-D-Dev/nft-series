@@ -1,9 +1,11 @@
-import { HarnessLoader } from '@angular/cdk/testing';
+import { HarnessLoader, TestElement } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardHarness } from '@angular/material/card/testing';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
+import { cardLinkMock } from '../../../mocks';
 import { CardLink } from '../../interfaces';
 import { CardLinkComponent } from './card-link.component';
 
@@ -13,16 +15,11 @@ describe('CardLinkComponent', () => {
   let fixture: ComponentFixture<CardLinkComponent>;
   let loader: HarnessLoader;
   let elementDebug: DebugElement;
-  const mockCardData: CardLink = {
-    title: 'Card Title',
-    devise: 'ETH',
-    floor: 0.01,
-    imgUrl: 'path/to/image.png'
-  };
+  const mockCardData: CardLink = cardLinkMock[0];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CardLinkComponent]
+      imports: [CardLinkComponent, RouterTestingModule]
     });
     fixture = TestBed.createComponent(CardLinkComponent);
     loader = TestbedHarnessEnvironment.loader(fixture);
@@ -54,9 +51,12 @@ describe('CardLinkComponent', () => {
     const imgDe = elementDebug.query(By.css('.mat-mdc-card-image'));
     const imgEl: HTMLImageElement = imgDe.nativeElement;
     expect(imgEl.src).toContain(mockCardData.imgUrl);
+  })
 
-    const linkElement = fixture.nativeElement.querySelector('a');
-    expect(linkElement.href).toContain('#');
-
+  it('should have a routerLink with the correct URL', async () => {
+    const matCard: MatCardHarness = await loader.getHarness(MatCardHarness);
+    const matCardEl: TestElement = await matCard.host()
+    const routerLinkAttribute: string | null = await matCardEl.getAttribute('ng-reflect-router-link');
+    expect(routerLinkAttribute).withContext('mat-card should have routerLink').toBe(`collections,${mockCardData.nameSeo}`)
   })
 });
