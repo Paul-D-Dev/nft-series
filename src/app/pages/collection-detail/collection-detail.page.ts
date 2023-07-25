@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-collection-detail',
@@ -9,5 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./collection-detail.page.scss']
 })
 export class CollectionDetailPage {
+  @Input()
+  set collectionName(name: string) {
+    this.collectionDetail = name;
+  }
 
+  collectionDetail: string | null = null;
 }
