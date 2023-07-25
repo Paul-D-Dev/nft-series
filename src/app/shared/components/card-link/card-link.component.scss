@@ -7,6 +7,12 @@
   max-width: 400px;
   min-width: 200px;
   width: clamp(200px, 100%, 400px);
+  transition: transform 150ms ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
 
   &__image__container {
     max-height: 200px;
@@ -28,6 +34,7 @@
       flex-direction: column;
     }
   }
+
 }
 
 a {
