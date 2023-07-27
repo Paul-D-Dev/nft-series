@@ -1,39 +1,43 @@
-<div class="cd__banner">
-  <img [src]="collectionDetail?.imgBanner" [alt]="'Banner ' + collectionDetail?.name">
-</div>
-
-<div class="container">
-
-  <div class="cd__header">
-    <div class="cd__avatar">
-      <img [src]="collectionDetail?.imgAvatar" [alt]="'Avatar ' + collectionDetail?.name">
-    </div>
-
-    <div class="cd__media">
-      <a mat-icon-button>
-        <mat-icon>{{Icons.Share}}</mat-icon>
-      </a>
-      <button mat-icon-button>
-        <mat-icon>{{Icons.MoreHoriz}}</mat-icon>
-      </button>
-    </div>
+<header>
+  <div class="cd__banner">
+    <img [src]="collectionDetail?.imgBanner" [alt]="'Banner ' + collectionDetail?.name">
   </div>
 
-  <section class="cd__information">
-    <h1>{{collectionDetail?.name}}</h1>
+  <div class="container">
 
-    <ul>
-      <li>Director <strong>Tod Browning</strong></li>
-      <li>Released <strong>1932</strong></li>
-      <li>Country <strong>USA</strong></li>
-    </ul>
+    <div class="cd__header">
+      <div class="cd__avatar">
+        <img [src]="collectionDetail?.imgAvatar" [alt]="'Avatar ' + collectionDetail?.name">
+      </div>
 
-    <p class="cd__information__description">
-      {{collectionDetail?.description}}
-    </p>
-  </section>
+      <div class="cd__media">
+        <a mat-icon-button>
+          <mat-icon>{{Icons.Share}}</mat-icon>
+        </a>
+        <button mat-icon-button>
+          <mat-icon>{{Icons.MoreHoriz}}</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <section class="cd__information">
+      <h1>{{collectionDetail?.name}}</h1>
+
+      <ul>
+        <li>Director <strong>Tod Browning</strong></li>
+        <li>Released <strong>1932</strong></li>
+        <li>Country <strong>USA</strong></li>
+      </ul>
+
+      <p class="cd__information__description">
+        {{collectionDetail?.description}}
+      </p>
+    </section>
+  </div>
+</header>
 
 
+<div class="container">
   <mat-tab-group>
     <mat-tab label="Items">
       items...
@@ -41,7 +45,7 @@
     <mat-tab label="Offers"></mat-tab>
     <mat-tab label="Casting"></mat-tab>
   </mat-tab-group>
-
 </div>
+
 
 
