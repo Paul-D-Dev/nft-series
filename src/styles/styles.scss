@@ -9,6 +9,14 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+ul {
+  padding-inline-start: unset;
+}
+
+li {
+  list-style-type: none;
+}
+
 .toolbar__grid {
   display: grid !important;
   grid-template-columns: auto 1fr auto;
