@@ -1,7 +1,9 @@
 export enum Icons {
+  Close = 'close',
   DarkMode = 'dark_mode',
   LightMode = 'light_mode',
   Menu = 'menu',
-  Close = 'close',
-  Wallet = 'wallet'
+  MoreHoriz = 'more_horiz',
+  Share = 'share',
+  Wallet = 'wallet',
 }
