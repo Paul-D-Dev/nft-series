@@ -43,7 +43,20 @@
       items...
     </mat-tab>
     <mat-tab label="Offers"></mat-tab>
-    <mat-tab label="Casting"></mat-tab>
+    <mat-tab label="Casting">
+      <section class="cd__tab__content__casting">
+        <div class="casting__card" *ngFor="let casting of collectionDetail?.casting">
+          <header class="casting__card__header">
+            <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                 [alt]="casting.actor">
+          </header>
+          <div class="casting__card__details">
+            <span>{{casting.actor}}</span>
+            <span>{{casting.character}}</span>
+          </div>
+        </div>
+      </section>
+    </mat-tab>
   </mat-tab-group>
 </div>
 
