@@ -31,3 +31,11 @@ li {
   margin-inline: auto;
   width: min(90%, 152rem);
 }
+
+
+.cd__tab__group {
+  & .mat-mdc-tab-body {
+    padding-block-start: 1rem;
+    padding-block-end: 1rem;
+  }
+}

@@ -54,6 +54,7 @@
     }
   }
 
+
   &__tab__items__header {
     display: grid;
     grid-template-columns: min-content auto min-content;
@@ -87,7 +88,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
-    padding-block-start: 1rem;
 
     .casting__card {
       display: flex;

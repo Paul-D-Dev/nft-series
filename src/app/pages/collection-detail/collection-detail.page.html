@@ -38,10 +38,10 @@
 
 
 <div class="container">
-  <mat-tab-group [mat-stretch-tabs]="false">
-    <mat-tab label="Items">
+  <mat-tab-group [mat-stretch-tabs]="false" class="cd__tab__group">
+    <mat-tab label="Items" class="cd__tab">
       <mat-drawer-container>
-        <mat-drawer #drawer mode="side" [opened]="isDesktop">
+        <mat-drawer mode="side" [opened]="isDesktop">
           hello
         </mat-drawer>
 
@@ -64,8 +64,8 @@
         </mat-drawer-content>
       </mat-drawer-container>
     </mat-tab>
-    <mat-tab label="Offers"></mat-tab>
-    <mat-tab label="Casting">
+    <mat-tab label="Offers" class="cd__tab"></mat-tab>
+    <mat-tab label="Casting" class="cd__tab">
       <section class="cd__tab__content__casting">
         <!--        Replace with swiper -->
         <div class="casting__card" *ngFor="let casting of collectionDetail?.casting">
