@@ -40,7 +40,24 @@
 <div class="container">
   <mat-tab-group [mat-stretch-tabs]="false">
     <mat-tab label="Items">
-      items...
+      <mat-drawer-container>
+        <mat-drawer #drawer mode="side" [opened]="desktopQuery.matches">
+          hello
+        </mat-drawer>
+
+        <mat-drawer-content>
+          <header class="cd__tab__items__header">
+            <button mat-icon-button>
+              <mat-icon>filter</mat-icon>
+            </button>
+
+            <div>
+              <input name="search" type="search" placeholder="Search by name"/>
+            </div>
+          </header>
+
+        </mat-drawer-content>
+      </mat-drawer-container>
     </mat-tab>
     <mat-tab label="Offers"></mat-tab>
     <mat-tab label="Casting">

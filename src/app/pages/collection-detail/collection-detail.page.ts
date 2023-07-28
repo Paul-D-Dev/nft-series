@@ -1,8 +1,10 @@
+import { MediaMatcher } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Icons } from '../../shared/enums';
 
@@ -26,17 +28,26 @@ interface Casting {
 @Component({
   selector: 'app-collection-detail',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, MatButtonModule, MatIconModule, MatCardModule],
+  imports: [CommonModule, MatTabsModule, MatButtonModule, MatIconModule, MatCardModule, MatSidenavModule],
   templateUrl: './collection-detail.page.html',
   styleUrls: ['./collection-detail.page.scss']
 })
-export class CollectionDetailPage {
+export class CollectionDetailPage implements OnDestroy {
+  constructor(cdRef: ChangeDetectorRef, media: MediaMatcher) {
+    // Documentation: https://material.angular.io/components/sidenav/examples#sidenav-responsive
+    this.desktopQuery = media.matchMedia('(min-width: 968px)');
+    this._desktopQueryListener = () => cdRef.detectChanges();
+    this.desktopQuery.addEventListener('change', this._desktopQueryListener);
+  }
+
   @Input()
   set collectionName(name: string) {
     // this.collectionDetail!.name = name;
   }
 
   protected readonly Icons = Icons;
+  private readonly _desktopQueryListener!: () => void;
+  desktopQuery!: MediaQueryList;
   collectionDetail: CollectionDetail | null = {
     imgAvatar: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',
     imgBanner: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',
@@ -61,5 +72,9 @@ export class CollectionDetailPage {
       }
     ]
   };
+
+  ngOnDestroy() {
+    this.desktopQuery.removeEventListener('change', this._desktopQueryListener);
+  }
 
 }
