@@ -48,12 +48,17 @@
         <mat-drawer-content>
           <header class="cd__tab__items__header">
             <button mat-icon-button>
-              <mat-icon>filter</mat-icon>
+              <mat-icon>{{Icons.FilterList}}</mat-icon>
             </button>
 
-            <div>
-              <input name="search" type="search" placeholder="Search by name"/>
+            <div class="field__search">
+              <mat-icon>search</mat-icon>
+              <input name="q" type="search" placeholder="Search by name"/>
             </div>
+
+            <button mat-icon-button>
+              <mat-icon>{{Icons.SwapVert}}</mat-icon>
+            </button>
           </header>
 
         </mat-drawer-content>

@@ -54,6 +54,35 @@
     }
   }
 
+  &__tab__items__header {
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    column-gap: 1rem;
+    align-items: center;
+
+    .field__search {
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 12px;
+      border: 1px solid #FFF;
+      border-radius: 12px;
+
+      input[type="search"] {
+        flex-grow: 1;
+        padding: 0;
+        background: transparent;
+        border: none;
+        color: #FFF; // TODO handle with theme
+
+        &:focus-visible {
+          outline: transparent;
+        }
+
+      }
+    }
+  }
+
   &__tab__content__casting {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
