@@ -1,6 +1,7 @@
-import { MediaMatcher } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,12 +33,11 @@ interface Casting {
   templateUrl: './collection-detail.page.html',
   styleUrls: ['./collection-detail.page.scss']
 })
-export class CollectionDetailPage implements OnDestroy {
-  constructor(cdRef: ChangeDetectorRef, media: MediaMatcher) {
-    // Documentation: https://material.angular.io/components/sidenav/examples#sidenav-responsive
-    this.desktopQuery = media.matchMedia('(min-width: 968px)');
-    this._desktopQueryListener = () => cdRef.detectChanges();
-    this.desktopQuery.addEventListener('change', this._desktopQueryListener);
+export class CollectionDetailPage {
+  constructor(breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe('(min-width: 967px)').pipe(
+      takeUntilDestroyed()
+    ).subscribe(bp => this.isDesktop = bp.matches)
   }
 
   @Input()
@@ -46,8 +46,7 @@ export class CollectionDetailPage implements OnDestroy {
   }
 
   protected readonly Icons = Icons;
-  private readonly _desktopQueryListener!: () => void;
-  desktopQuery!: MediaQueryList;
+  isDesktop!: boolean;
   collectionDetail: CollectionDetail | null = {
     imgAvatar: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',
     imgBanner: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',
@@ -72,9 +71,5 @@ export class CollectionDetailPage implements OnDestroy {
       }
     ]
   };
-
-  ngOnDestroy() {
-    this.desktopQuery.removeEventListener('change', this._desktopQueryListener);
-  }
 
 }
