@@ -40,26 +40,31 @@
 <div class="container">
   <mat-tab-group [mat-stretch-tabs]="false" class="cd__tab__group">
     <mat-tab label="Items" class="cd__tab">
-      <mat-drawer-container>
-        <mat-drawer mode="side" [opened]="isDesktop">
-          hello
+      <header class="cd__tab__items__header">
+        <button mat-icon-button>
+          <mat-icon>{{Icons.FilterList}}</mat-icon>
+        </button>
+
+        <div class="field__search">
+          <mat-icon>search</mat-icon>
+          <input name="q" type="search" placeholder="Search by name"/>
+        </div>
+
+        <button mat-icon-button>
+          <mat-icon>{{Icons.SwapVert}}</mat-icon>
+        </button>
+      </header>
+
+      <mat-drawer-container class="cd__tab__items__container">
+        <mat-drawer mode="side" [opened]="isDesktop" class="cd__tab__items__filters">
+          Filters
         </mat-drawer>
 
-        <mat-drawer-content>
-          <header class="cd__tab__items__header">
-            <button mat-icon-button>
-              <mat-icon>{{Icons.FilterList}}</mat-icon>
-            </button>
+        <mat-drawer-content class="cd__tab__items__main">
 
-            <div class="field__search">
-              <mat-icon>search</mat-icon>
-              <input name="q" type="search" placeholder="Search by name"/>
-            </div>
-
-            <button mat-icon-button>
-              <mat-icon>{{Icons.SwapVert}}</mat-icon>
-            </button>
-          </header>
+          <section>
+            Todo add list nft card
+          </section>
 
         </mat-drawer-content>
       </mat-drawer-container>
