@@ -75,7 +75,7 @@
           padding: 0;
           background: transparent;
           border: none;
-          color: #FFF; // TODO handle with theme
+          color: var(--clr-text);
 
           &:focus-visible {
             outline: transparent;
@@ -89,10 +89,32 @@
       display: grid;
     }
 
+    &__filters {
+      max-width: 18.75rem;
+
+      .price__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .price__range {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+      }
+
+      .filter__currency {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
     &__main {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+      //display: grid;
+      // TODO: update height
+      height: 100vh;
 
       section {
         background: red;
