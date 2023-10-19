@@ -1,8 +1,25 @@
+@import 'mixins';
+
 $height-actions: 36px;
 
 .card-buy {
   position: relative;
-  overflow: hidden;
+  @include card-ui;
+
+  &__content {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: .5rem;
+    padding: 1rem;
+
+    span:not(:last-child) {
+      font-weight: bold;
+    }
+
+    span:last-child {
+      font-size: 0.75rem;
+    }
+  }
 
   &__actions {
     position: absolute;
@@ -21,7 +38,7 @@ $height-actions: 36px;
       flex-grow: 3;
     }
 
-    button:not(first-child) {
+    button:not(:first-child) {
       flex: 1;
     }
 

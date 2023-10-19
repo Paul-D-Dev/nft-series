@@ -1,11 +1,14 @@
 <mat-card class="card-buy">
 
   <!--    TODO: size + hover animation -->
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+  <img mat-card-image [src]="cardToBuy.img.src" [alt]="cardToBuy.img.alt">
 
-  <!--    TODO: handle content-->
   <mat-card-content class="card-buy__content">
-    bla bla
+    <span>{{cardToBuy.title}} #{{cardToBuy.idListing}}</span>
+    <span>{{cardToBuy.price}} {{cardToBuy.currency}}</span>
+    <span *ngIf="cardToBuy.lastSale">
+        Last sale: {{cardToBuy.lastSale.price}} {{cardToBuy.lastSale.currency}}
+    </span>
   </mat-card-content>
 
   <!--    TODO: handle non focused when user used tab key    -->

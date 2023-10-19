@@ -1,8 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+
+interface CardToBuy {
+  idListing: number,
+  title: string,
+  price: number,
+  currency: string,
+  img: {
+    src: string,
+    alt: string
+  },
+  lastSale?: {
+    price: number,
+    currency: string
+  }
+}
 
 @Component({
   selector: 'app-card-to-buy',
@@ -13,5 +28,19 @@ import { MatIconModule } from "@angular/material/icon";
 })
 export class CardToBuyComponent {
 //     TODO: inputs
+  @Input() cardToBuy: CardToBuy = {
+    idListing: 332,
+    title: 'Chaos Road',
+    price: 0.99,
+    currency: 'ETH',
+    img: {
+      src: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      alt: ''
+    },
+    lastSale: {
+      price: 0.17,
+      currency: 'WETH'
+    }
+  }
 
 }
