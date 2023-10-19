@@ -1,24 +1,24 @@
 @use "@angular/material" as mat;
 @use "./define-theme" as app;
-@use "./varialbles-theme" as variables;
+@use "./variables-theme" as variables;
 
 @include mat.core();
 
 // SOURCE define light theme with foreground and background
 // https://github.com/angular/components/issues/6244#issuecomment-1017629612
 $theme-light: app.define-light-theme((
-  color: (
-    primary: mat.define-palette(mat.$indigo-palette),
-    accent: mat.define-palette(mat.$pink-palette, A200, A100, A400),
-  )
+        color: (
+                primary: mat.define-palette(mat.$indigo-palette),
+                accent: mat.define-palette(mat.$pink-palette, A200, A100, A400),
+        )
 ));
 
 $theme-dark: app.define-dark-theme((
-  color: (
-    primary: mat.define-palette(mat.$blue-grey-palette),
-    accent: mat.define-palette(mat.$amber-palette, A200, A100, A400),
-    warn: mat.define-palette(mat.$deep-orange-palette),
-  )
+        color: (
+                primary: mat.define-palette(mat.$blue-grey-palette),
+                accent: mat.define-palette(mat.$amber-palette, A200, A100, A400),
+                warn: mat.define-palette(mat.$deep-orange-palette),
+        )
 ));
 
 @include mat.all-component-themes($theme-light);
