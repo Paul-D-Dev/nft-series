@@ -41,6 +41,12 @@
               "src/styles/themes/material-theme.scss",
               "src/styles/_variables.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles",
+                "src/styles/mixins"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
