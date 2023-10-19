@@ -1,7 +1,8 @@
 <mat-card class="card-buy">
 
-  <!--    TODO: size + hover animation -->
-  <img mat-card-image [src]="cardToBuy.img.src" [alt]="cardToBuy.img.alt">
+  <div class="card-buy__image__container">
+    <img mat-card-image [src]="cardToBuy.img.src" [alt]="cardToBuy.img.alt">
+  </div>
 
   <mat-card-content class="card-buy__content">
     <span>{{cardToBuy.title}} #{{cardToBuy.idListing}}</span>
