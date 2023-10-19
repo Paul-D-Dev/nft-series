@@ -1,0 +1,8 @@
+@mixin card-ui {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 4px 16px;
+  max-width: 400px;
+  min-width: 200px;
+  width: clamp(200px, 100%, 400px);
+}
