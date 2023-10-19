@@ -1,0 +1,40 @@
+$height-actions: 36px;
+
+.card-buy {
+  position: relative;
+  overflow: hidden;
+
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    min-height: unset;
+    transition: transform .3s ease-out;
+    transform: translateY($height-actions);
+
+    button {
+      border-radius: 0;
+    }
+
+    button:first-child {
+      flex-grow: 3;
+    }
+
+    button:not(first-child) {
+      flex: 1;
+    }
+
+    button:last-child {
+      // TODO update color with theme
+      border-left: .5px solid black;
+    }
+  }
+
+  &:hover {
+    .card-buy__actions {
+      transform: translateY(0);
+    }
+  }
+
+}
