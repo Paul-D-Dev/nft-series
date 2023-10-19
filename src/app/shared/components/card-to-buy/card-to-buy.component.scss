@@ -57,16 +57,21 @@ $height-actions: 36px;
     }
   }
 
-  &:hover {
-    .card-buy__actions {
-      transform: translateY(0);
-    }
+  @media (hover: hover) {
+    &:hover {
 
-    .card-buy__image__container {
-      img {
-        transform: scale(1.05);
+      .card-buy__actions {
+        transform: translateY(0);
+      }
+
+      .card-buy__image__container {
+        img {
+          transform: scale(1.05);
+        }
       }
     }
   }
 
+
 }
+

@@ -12,11 +12,9 @@
     </span>
   </mat-card-content>
 
-  <!--    TODO: handle non focused when user used tab key    -->
-  <!--    TODO: handle display action when mobile view    -->
-  <mat-card-actions class="card-buy__actions">
-    <button mat-flat-button color="accent">Buy now</button>
-    <button mat-flat-button color="accent">
+  <mat-card-actions class="card-buy__actions" [hidden]="true">
+    <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1">Buy now</button>
+    <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1">
       <mat-icon class="material-icons-outlined">shopping_cart</mat-icon>
     </button>
   </mat-card-actions>
