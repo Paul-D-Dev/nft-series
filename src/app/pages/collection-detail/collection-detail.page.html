@@ -135,7 +135,11 @@
 
         <mat-drawer-content class="cd__tab__items__main">
 
-          <section>
+          <section class="section__grid" [class.grid-reduced-columns]="isOpenedFilters">
+            <app-card-to-buy></app-card-to-buy>
+            <app-card-to-buy></app-card-to-buy>
+            <app-card-to-buy></app-card-to-buy>
+            <app-card-to-buy></app-card-to-buy>
             <app-card-to-buy></app-card-to-buy>
           </section>
 
