@@ -5,4 +5,5 @@
   max-width: 400px;
   min-width: 200px;
   width: clamp(200px, 100%, 400px);
+  cursor: pointer;
 }
