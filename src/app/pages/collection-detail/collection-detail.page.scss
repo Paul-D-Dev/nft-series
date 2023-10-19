@@ -115,9 +115,10 @@
       //display: grid;
       // TODO: update height
       height: 100vh;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
 
       section {
-        background: red;
         flex: 1;
       }
     }
