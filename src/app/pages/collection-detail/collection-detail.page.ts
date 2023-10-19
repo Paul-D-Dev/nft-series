@@ -13,9 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
-
-
 import { Icons } from '../../shared/enums';
+import { CardToBuyComponent } from "../../shared/components/card-to-buy/card-to-buy.component";
 
 interface CollectionDetail {
   imgBanner: string;
@@ -37,7 +36,7 @@ interface Casting {
 @Component({
   selector: 'app-collection-detail',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, MatButtonModule, MatIconModule, MatCardModule, MatSidenavModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatCheckboxModule],
+  imports: [CommonModule, CardToBuyComponent, MatTabsModule, MatButtonModule, MatIconModule, MatCardModule, MatSidenavModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatCheckboxModule],
   templateUrl: './collection-detail.page.html',
   styleUrls: ['./collection-detail.page.scss']
 })
