@@ -1,4 +1,4 @@
-<mat-card class="card-buy">
+<mat-card class="card-buy" *ngIf="cardToBuy">
 
   <div class="card-buy__image__container">
     <img mat-card-image [src]="cardToBuy.img.src" [alt]="cardToBuy.img.alt">

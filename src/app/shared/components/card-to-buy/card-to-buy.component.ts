@@ -12,21 +12,8 @@ import { CardToBuy } from "../../interfaces";
   templateUrl: './card-to-buy.component.html',
   styleUrls: ['./card-to-buy.component.scss']
 })
+
 export class CardToBuyComponent {
-//     TODO: inputs
-  @Input() cardToBuy: CardToBuy = {
-    idListing: 332,
-    title: 'Chaos Road',
-    price: 0.99,
-    currency: 'ETH',
-    img: {
-      src: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      alt: ''
-    },
-    lastSale: {
-      price: 0.17,
-      currency: 'WETH'
-    }
-  }
+  @Input() cardToBuy: CardToBuy | undefined
 
 }
