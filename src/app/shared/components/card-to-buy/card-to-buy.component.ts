@@ -3,21 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-
-interface CardToBuy {
-  idListing: number,
-  title: string,
-  price: number,
-  currency: string,
-  img: {
-    src: string,
-    alt: string
-  },
-  lastSale?: {
-    price: number,
-    currency: string
-  }
-}
+import { CardToBuy } from "../../interfaces";
 
 @Component({
   selector: 'app-card-to-buy',
