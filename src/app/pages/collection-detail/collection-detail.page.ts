@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Icons } from '../../shared/enums';
 import { CardToBuyComponent } from "../../shared/components/card-to-buy/card-to-buy.component";
+import { cardToBuyMock } from "../../mocks";
 
 interface CollectionDetail {
   imgBanner: string;
@@ -53,6 +54,7 @@ export class CollectionDetailPage {
   }
 
   protected readonly Icons = Icons;
+  protected readonly cardToBuyMock = cardToBuyMock
   isOpenedFilters: boolean = false;
   collectionDetail: CollectionDetail | null = {
     imgAvatar: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',

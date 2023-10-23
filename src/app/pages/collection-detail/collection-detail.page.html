@@ -136,11 +136,9 @@
         <mat-drawer-content class="cd__tab__items__main">
 
           <section class="section__grid" [class.grid-reduced-columns]="isOpenedFilters">
-            <app-card-to-buy></app-card-to-buy>
-            <app-card-to-buy></app-card-to-buy>
-            <app-card-to-buy></app-card-to-buy>
-            <app-card-to-buy></app-card-to-buy>
-            <app-card-to-buy></app-card-to-buy>
+            <ng-container *ngFor="let cardToBuy of [cardToBuyMock]">
+              <app-card-to-buy [cardToBuy]="cardToBuy"></app-card-to-buy>
+            </ng-container>
           </section>
 
         </mat-drawer-content>
