@@ -1,4 +1,12 @@
+$main-surface-bg-color: rgb(48, 48, 48);
+
 .cd {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+
   &__banner {
     width: 100%;
     max-height: 320px;
@@ -54,107 +62,118 @@
     }
   }
 
-
-  &__tab__items {
-    &__header {
+  &__tab {
+    &__group {
       display: grid;
-      grid-template-columns: min-content auto min-content;
-      column-gap: 1rem;
-      align-items: center;
-
-      .field__search {
-        display: flex;
-        justify-content: flex-start;
-        gap: 1rem;
-        padding: 12px;
-        border: 1px solid;
-        border-radius: 12px;
-
-        input[type="search"] {
-          flex-grow: 1;
-          padding: 0;
-          background: transparent;
-          border: none;
-          color: var(--clr-text);
-
-          &:focus-visible {
-            outline: transparent;
-          }
-
-        }
-      }
+      grid-template-rows: auto 1fr;
+      height: 100%;
     }
 
-    &__container {
-      display: grid;
-    }
 
-    &__filters {
-      max-width: 18.75rem;
-
-      .price__form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .price__range {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: .5rem;
-      }
-
-      .filter__currency {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    &__main {
-      //display: grid;
-      // TODO: update height
-      height: 100vh;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-
-      section {
-        flex: 1;
-      }
-    }
-
-  }
-
-  &__tab__content__casting {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-
-    .casting__card {
-      display: flex;
-      flex-direction: column;
+    &__items {
 
       &__header {
-        height: 100%;
-        max-height: 165px;
-        width: min(95%, 165px);
-        margin-inline: auto;
-        border-radius: 50%;
-        overflow: hidden;
+        display: grid;
+        grid-template-columns: min-content auto min-content;
+        column-gap: 1rem;
+        align-items: center;
 
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
+        .field__search {
+          display: flex;
+          justify-content: flex-start;
+          gap: 1rem;
+          padding: 12px;
+          border: 1px solid;
+          border-radius: 12px;
+
+          input[type="search"] {
+            flex-grow: 1;
+            padding: 0;
+            background: transparent;
+            border: none;
+            color: var(--clr-text);
+
+            &:focus-visible {
+              outline: transparent;
+            }
+
+          }
         }
       }
 
-      &__details {
-        padding-block-start: 1rem;
+      &__container {
+        flex: 1;
+      }
+
+      &__filters {
+        max-width: 18.75rem;
+        background-color: $main-surface-bg-color;
+
+        .mat-expansion-panel {
+          background-color: $main-surface-bg-color;
+        }
+
+        .price__form {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .price__range {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: .5rem;
+        }
+
+        .filter__currency {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      &__main {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        section {
+          flex: 1;
+        }
+      }
+
+    }
+
+    &__content__casting {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+
+      .casting__card {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+
+        &__header {
+          height: 100%;
+          max-height: 165px;
+          width: min(95%, 165px);
+          margin-inline: auto;
+          border-radius: 50%;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &__details {
+          padding-block-start: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
       }
     }
   }
