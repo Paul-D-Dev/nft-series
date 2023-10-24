@@ -101,3 +101,11 @@ li {
     flex-direction: column;
   }
 }
+
+
+.mat-accordion {
+  .mat-expansion-panel {
+    border-radius: 12px !important
+  }
+}
+
