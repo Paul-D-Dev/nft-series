@@ -95,4 +95,9 @@ li {
     padding-block-start: 1rem;
     padding-block-end: 1rem;
   }
+
+  & .mat-mdc-tab-body-content {
+    display: flex;
+    flex-direction: column;
+  }
 }
