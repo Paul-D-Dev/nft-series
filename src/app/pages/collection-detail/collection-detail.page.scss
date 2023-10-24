@@ -1,3 +1,4 @@
+// TODO update with variable theme color
 $main-surface-bg-color: rgb(48, 48, 48);
 
 .cd {
@@ -77,6 +78,7 @@ $main-surface-bg-color: rgb(48, 48, 48);
         grid-template-columns: min-content auto min-content;
         column-gap: 1rem;
         align-items: center;
+        padding-block-end: 1rem;
 
         .field__search {
           display: flex;
@@ -107,7 +109,9 @@ $main-surface-bg-color: rgb(48, 48, 48);
 
       &__filters {
         max-width: 18.75rem;
+        padding-right: 1rem;
         background-color: $main-surface-bg-color;
+        border-right: none;
 
         .mat-expansion-panel {
           background-color: $main-surface-bg-color;
@@ -133,7 +137,6 @@ $main-surface-bg-color: rgb(48, 48, 48);
       }
 
       &__main {
-        padding-top: 1rem;
         padding-bottom: 1rem;
 
         section {
