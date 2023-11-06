@@ -15,12 +15,16 @@ import { Icons } from '../../enums';
 })
 export class NavBarComponent {
   protected readonly Icons = Icons;
-  _router = inject(Router);
+  _router: Router = inject(Router);
   @Input() isActiveSideNav: boolean = false
   @Output() toggleSideNav = new EventEmitter();
 
   navigateToHomePage(): void {
     this._router.navigateByUrl('/');
+  }
+
+  emitToggleSideNav(): void {
+    this.toggleSideNav.emit();
   }
 
 }
