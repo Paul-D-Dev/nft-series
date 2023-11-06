@@ -4,7 +4,7 @@ import { ThemeService } from './theme.service';
 import { DOCUMENT } from "@angular/common";
 import { Theme } from "../enums";
 
-fdescribe('ThemeService', () => {
+describe('ThemeService', () => {
   let service: ThemeService;
   let document: Document;
   let renderer: jasmine.SpyObj<Renderer2>;
