@@ -1,29 +1,28 @@
 import { Renderer2 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { BehaviorSubject } from 'rxjs';
-import { Theme } from '../enums';
 import { ThemeService } from './theme.service';
+import { DOCUMENT } from "@angular/common";
+import { Theme } from "../enums";
 
-describe('ThemeService', () => {
+fdescribe('ThemeService', () => {
   let service: ThemeService;
-  let themeServiceSpy: jasmine.SpyObj<ThemeService>;
-  const mockRenderer = jasmine.createSpyObj(['addClass', 'removeClass'])
+  let document: Document;
+  let renderer: jasmine.SpyObj<Renderer2>;
 
 
   beforeEach(() => {
-    const serviceSpy = jasmine.createSpyObj(
-      ['_darkPrefersColorScheme', '_userTheme$', 'initUserTheme', 'toggleUserTheme'], {
-        '_darkPrefersColorScheme': false,
-        '_userTheme$': new BehaviorSubject<Theme | null>(null)
-      })
+    const mockRenderer = jasmine.createSpyObj('Renderer2', ['addClass', 'removeClass']);
+    const windowMock = jasmine.createSpyObj('window', ['matchMedia']);
+
     TestBed.configureTestingModule({
       providers: [
-        {provide: ThemeService, useValue: serviceSpy},
-        {provide: Renderer2, useValue: mockRenderer}
+        ThemeService,
+        { provide: Renderer2, useValue: mockRenderer },
       ]
     });
+    document = TestBed.inject(DOCUMENT);
+    renderer = TestBed.inject(Renderer2) as jasmine.SpyObj<Renderer2>;
     service = TestBed.inject(ThemeService);
-    themeServiceSpy = TestBed.inject(ThemeService) as jasmine.SpyObj<ThemeService>;
 
   });
 
@@ -31,14 +30,21 @@ describe('ThemeService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should init prefersColorScheme dark to false', () => {
-    expect(themeServiceSpy['_darkPrefersColorScheme']).toBeFalse();
-  })
+  it('should add dark-theme class', () => {
+    service.setDarkTheme();
+    expect(renderer.addClass.calls.count()).toBe(1);
+    expect(renderer.addClass).toHaveBeenCalledWith(document.body, `${Theme.Dark}-theme`);
+  });
 
-  // it('should call initUserTheme', () => {
-  //   expect(themeServiceSpy).toBeDefined()
-  //   console.log(service['_userTheme']);
-  //   expect(service.toggleUserTheme).toHaveBeenCalled()
-  // })
+  it('should remove dark-theme class', () => {
+    service.removeDarkTheme();
+    expect(renderer.removeClass.calls.count()).toBe(1);
+    expect(renderer.removeClass).toHaveBeenCalledWith(document.body, `${Theme.Dark}-theme`);
+  });
+
+  // TODO: init service values
+  // TODO: toggleUserTheme Dark -> add class
+  // TODO: toggleUserTheme Light -> remove class
+  // TODO: get userThemeIsDark$ return observable boolean
 
 });
