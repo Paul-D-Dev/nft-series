@@ -10,7 +10,7 @@ import { By } from "@angular/platform-browser";
 import { MatButtonHarness } from "@angular/material/button/testing";
 import { MatIconHarness } from "@angular/material/icon/testing";
 
-fdescribe('CardToBuyComponent', () => {
+describe('CardToBuyComponent', () => {
   let component: CardToBuyComponent;
   let fixture: ComponentFixture<CardToBuyComponent>;
   let loader: HarnessLoader;
