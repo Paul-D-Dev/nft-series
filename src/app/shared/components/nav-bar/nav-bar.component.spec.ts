@@ -24,9 +24,15 @@ fdescribe('NavBarComponent', () => {
   });
 
   it('should navigate to the home page', () => {
+    // source: https://danielk.tech/home/how-to-test-the-angular-router
     component.navigateToHomePage();
-    const navArgs = routerSpy.navigateByUrl.calls.first().args[0];
-    expect(navArgs).toEqual('/');
+    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/');
+  })
+
+  it('should emit toggleSideNav event', () => {
+    spyOn(component.toggleSideNav, 'emit');
+    component.emitToggleSideNav();
+    expect(component.toggleSideNav.emit).toHaveBeenCalled();
   })
 
 });
