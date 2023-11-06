@@ -1,12 +1,12 @@
 <mat-toolbar class="nav toolbar__grid">
-  <button type="button" mat-icon-button (click)="toggleSideNav.emit()">
-    <mat-icon>{{ isActiveSideNav ? Icons.Close : Icons.Menu}}</mat-icon>
-  </button>
-  <span routerLink="/">NFT Series</span>
-  <div class="toolbar__icons">
-    <button type="button" mat-flat-button color="accent">
-      Connect wallet
-      <mat-icon>{{Icons.Wallet}}</mat-icon>
+    <button type="button" mat-icon-button (click)="toggleSideNav.emit()">
+        <mat-icon>{{ isActiveSideNav ? Icons.Close : Icons.Menu}}</mat-icon>
     </button>
-  </div>
+    <span (click)="navigateToHomePage()">NFT Series</span>
+    <div class="toolbar__icons">
+        <button type="button" mat-flat-button color="accent">
+            Connect wallet
+            <mat-icon>{{Icons.Wallet}}</mat-icon>
+        </button>
+    </div>
 </mat-toolbar>
