@@ -10,7 +10,7 @@ import { MatIconHarness } from "@angular/material/icon/testing";
 import { Icons } from "../../enums";
 import { By } from "@angular/platform-browser";
 
-fdescribe('NavBarComponent', () => {
+describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let loader: HarnessLoader;
