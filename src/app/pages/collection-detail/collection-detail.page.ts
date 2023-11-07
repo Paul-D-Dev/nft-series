@@ -1,21 +1,21 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { CommonModule }       from '@angular/common';
+import { Component, Input }   from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule }    from '@angular/material/button';
+import { MatCardModule }      from '@angular/material/card';
+import { MatCheckboxModule }  from '@angular/material/checkbox';
+import { MatChipsModule }     from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTabsModule } from '@angular/material/tabs';
-import { Icons } from '../../shared/enums';
-import { CardToBuyComponent } from "../../shared/components/card-to-buy/card-to-buy.component";
-import { cardToBuyMock } from "../../mocks";
+import { MatIconModule }      from '@angular/material/icon';
+import { MatInputModule }     from '@angular/material/input';
+import { MatSelectModule }    from '@angular/material/select';
+import { MatSidenavModule }   from '@angular/material/sidenav';
+import { MatTabsModule }      from '@angular/material/tabs';
+import { cardToBuyMock }      from '../../mocks';
+import { CardToBuyComponent } from '../../shared/components/card-to-buy/card-to-buy.component';
+import { Icons }              from '../../shared/enums';
 
 interface CollectionDetail {
   imgBanner: string;
@@ -45,6 +45,8 @@ export class CollectionDetailPage {
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe('(min-width: 967px)').pipe(
       takeUntilDestroyed()
+      // TODO fix when we change the tab and resize width mobile to desktop
+      // the first element of the list is hidden behind the filter
     ).subscribe(bp => this.isOpenedFilters = bp.matches)
   }
 
