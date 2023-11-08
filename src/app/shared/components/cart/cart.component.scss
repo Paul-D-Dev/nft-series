@@ -1,0 +1,109 @@
+$border-radius: 12px;
+$header-border-bottom: #fff;
+$cart-bg: blueviolet;
+
+.cart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 1rem;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border-radius: $border-radius $border-radius 0 0;
+  height: min-content;
+  max-height: 95vh;
+  width: 100dvw;
+  background-color: $cart-bg;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+    border-bottom: solid 1px $header-border-bottom;
+  }
+
+  &__main {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    &__list {
+      overflow-y: auto;
+
+      &__items {
+        li:first-of-type {
+          font-weight: bold;
+        }
+
+        li:last-of-type {
+          font-weight: lighter;
+        }
+      }
+
+      &__action {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+
+    &__empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    &__price {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      &__currencies {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    & > button {
+      height: 56px;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+}
+
+@media screen and (min-width: 540px) {
+  .cart {
+    $bottom-space: 1rem;
+    width: 400px;
+    height: calc(100vh - $bottom-space * 2);
+    max-height: unset;
+    bottom: $bottom-space;
+    right: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+}

@@ -1,0 +1,79 @@
+<aside class="cart">
+  <header class="cart__header">
+    <h2>Your cart</h2>
+    <button mat-icon-button (click)="closeCart()">
+      <mat-icon>{{Icons.Close}}</mat-icon>
+    </button>
+  </header>
+
+  <main class="cart__main">
+    <ng-container *ngIf="items.length === 1; else noItemsList">
+      <div class="cart__main__header">
+        <span>{{items.length}} items</span>
+        <button mat-button (click)="clearCart()">Clear all</button>
+      </div>
+
+      <mat-list class="cart__main__list">
+        <mat-list-item lines="3">
+          <div matListItemAvatar></div>
+          <ul class="cart__main__list__items">
+            <li>Monster Party #1507</li>
+            <li>Monster Party</li>
+            <li>0,01 ETH</li>
+            <li>Creator earnings: 5%</li>
+          </ul>
+          <div matListItemMeta class="cart__main__list__action">
+            <button mat-icon-button>
+              <mat-icon>{{Icons.Delete}}</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-list-item lines="3">
+          <div matListItemAvatar></div>
+          <ul class="cart__main__list__items">
+            <li>Monster Party #1507</li>
+            <li>Monster Party</li>
+            <li>0,01 ETH</li>
+            <li>Creator earnings: 5%</li>
+          </ul>
+          <div matListItemMeta class="cart__main__list__action">
+            <button mat-icon-button>
+              <mat-icon>{{Icons.Delete}}</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-list-item lines="3">
+          <div matListItemAvatar></div>
+          <ul class="cart__main__list__items">
+            <li>Monster Party #1507</li>
+            <li>Monster Party</li>
+            <li>0,01 ETH</li>
+            <li>Creator earnings: 5%</li>
+          </ul>
+          <div matListItemMeta class="cart__main__list__action">
+            <button mat-icon-button>
+              <mat-icon>{{Icons.Delete}}</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+
+    <ng-template #noItemsList>
+      <div class="cart__main__empty">
+        Add items to get started.
+      </div>
+    </ng-template>
+  </main>
+
+  <footer class="cart__footer">
+    <div *ngIf="items.length > 0" class="cart__footer__price">
+      <span class="bold">Total price</span>
+      <div class="cart__footer__price__currencies">
+        <span class="bold">0,589 ETH</span>
+        <span>$1 116,80</span>
+      </div>
+    </div>
+    <button mat-flat-button [disabled]="items.length === 1" color="accent">Complete purchase</button>
+  </footer>
+</aside>
