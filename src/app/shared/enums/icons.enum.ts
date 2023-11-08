@@ -8,4 +8,6 @@ export enum Icons {
   Share = 'share',
   SwapVert = 'swap_vert',
   Wallet = 'wallet',
+  ShoppingCart = 'shopping_cart',
+  Delete = 'delete'
 }
