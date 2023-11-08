@@ -27,7 +27,8 @@ export class AuthService {
         return await ethereum.request({method: 'eth_requestAccounts'});
       }),
       switchMap(async (response: string[]) => {
-        console.log(response)
+        console.log(response);
+        sessionStorage.setItem('publicKey', response[0])
         this.metaAddress.next(response[0]);
         // await ethereum.request({
         //   method: 'personal_sign',
