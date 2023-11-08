@@ -10,5 +10,9 @@
     </button>
 
     {{metaAddress$ | async}}
+
+    <button mat-flat-button (click)="openCart()">
+      <mat-icon>{{Icons.ShoppingCart}}</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
