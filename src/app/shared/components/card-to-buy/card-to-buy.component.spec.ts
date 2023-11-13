@@ -1,30 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardToBuyComponent } from './card-to-buy.component';
-import { HarnessLoader } from "@angular/cdk/testing";
-import { DebugElement } from "@angular/core";
-import { CardToBuy } from "../../interfaces";
-import { cardToBuyMock } from "../../../mocks";
-import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
-import { MatCardHarness, MatCardSection } from "@angular/material/card/testing";
-import { By } from "@angular/platform-browser";
-import { MatButtonHarness } from "@angular/material/button/testing";
-import { MatIconHarness } from "@angular/material/icon/testing";
+import { HarnessLoader }                  from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment }      from '@angular/cdk/testing/testbed';
+import { DebugElement }                   from '@angular/core';
+import { ComponentFixture, TestBed }      from '@angular/core/testing';
+import { MatButtonHarness }               from '@angular/material/button/testing';
+import { MatCardHarness, MatCardSection } from '@angular/material/card/testing';
+import { MatIconHarness }                 from '@angular/material/icon/testing';
+import { By }                             from '@angular/platform-browser';
+import { cardToBuyMock }                  from '../../../mocks';
+import { CardToBuy }                      from '../../interfaces';
+import { CartService }                    from '../../services/cart.service';
+import { CardToBuyComponent }             from './card-to-buy.component';
 
-describe('CardToBuyComponent', () => {
+fdescribe('CardToBuyComponent', () => {
   let component: CardToBuyComponent;
   let fixture: ComponentFixture<CardToBuyComponent>;
   let loader: HarnessLoader;
   let elementDebug: DebugElement;
+  let cartServiceSpy: jasmine.SpyObj<CartService>
   const mockCardToBuyData: CardToBuy = cardToBuyMock;
 
   beforeEach(() => {
+    cartServiceSpy = jasmine.createSpyObj('CartService', ['add']);
+
     TestBed.configureTestingModule({
-      imports: [CardToBuyComponent]
+      imports: [CardToBuyComponent],
+      providers: [
+        { CartService, useValue: cartServiceSpy }
+      ]
     });
     fixture = TestBed.createComponent(CardToBuyComponent);
     loader = TestbedHarnessEnvironment.loader(fixture);
     component = fixture.componentInstance;
     component.cardToBuy = mockCardToBuyData;
+
     elementDebug = fixture.debugElement;
     fixture.detectChanges();
   });
@@ -112,5 +120,18 @@ describe('CardToBuyComponent', () => {
 
     const shoppingIconEl = await shoppingIcon.host();
     expect(await shoppingIconEl.hasClass('material-icons-outlined')).toBeTrue();
+  })
+
+  fit('should call addToCart', async () => {
+    spyOn(component, 'addToCart');
+    const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
+    expect(await shoppingCartButton).toBeTruthy();
+
+    await shoppingCartButton.click();
+    expect(component.addToCart).toHaveBeenCalledWith(mockCardToBuyData.id);
+    expect(component.addToCart).toHaveBeenCalledTimes(1);
+
+    // TODO test call cardService.add();
+    // expect(cartServiceSpy.add.calls.any()).withContext('add called').toBe(true);
   })
 });
