@@ -1,6 +1,7 @@
 $border-radius: 12px;
-$header-border-bottom: #fff;
-$cart-bg: blueviolet;
+$header-border-bottom: var(--divider-color);
+$cart-bg: var(--bg-color);
+$primary-color: var(--clr-text);
 
 .cart {
   position: absolute;
@@ -14,6 +15,7 @@ $cart-bg: blueviolet;
   max-height: 95vh;
   width: 100dvw;
   background-color: $cart-bg;
+  color: $primary-color;
 
   &__header {
     display: flex;
