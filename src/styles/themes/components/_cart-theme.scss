@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  $bg-palette: get-color-from-theme($theme, background);
+  $foreground-palette: get-color-from-theme($theme, foreground);
+  .cart {
+    background-color: mat.get-color-from-palette($bg-palette, background);
+  }
+}
+
+
+@mixin theme($theme) {
+  @if map.get($theme, color) {
+    @include color($theme);
+  }
+
+  //@if mat.theme-has($theme, typography) {
+  //  @include typography($theme);
+  //}
+}
+
+// TODO extract function to file
+
+@function get-color-from-theme($theme, $color) {
+  @if map.has-key($theme, color) {
+    $colors: mat.get-color-config($theme);
+
+    @if map.get($colors, $color) {
+      @return map.get($colors, $color);
+    } @else {
+      @error 'Cound not find the #{$color} in the #{theme}';
+    }
+  } @else {
+    @error 'Cound not find the color list';
+  }
+}
