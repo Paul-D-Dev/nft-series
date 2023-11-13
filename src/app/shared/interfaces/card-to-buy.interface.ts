@@ -1,4 +1,5 @@
 export interface CardToBuy {
+  id: string,
   idListing: number,
   title: string,
   price: number,
