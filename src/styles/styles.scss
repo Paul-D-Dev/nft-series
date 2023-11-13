@@ -25,6 +25,10 @@ li {
   font-weight: bold;
 }
 
+.d-inline-block {
+  display: inline-block;
+}
+
 .toolbar__grid {
   display: grid !important;
   grid-template-columns: auto 1fr auto;
