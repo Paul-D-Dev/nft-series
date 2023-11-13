@@ -51,7 +51,9 @@ export class NavBarComponent {
 
   openCart(): void {
     console.log('open cart');
-    this.dialog.open(CartComponent);
+    this.dialog.open(CartComponent, {
+      // backdropClass: 'op'
+    });
   }
 
 }
