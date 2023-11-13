@@ -26,9 +26,6 @@ export class NavBarComponent {
   @Input() isActiveSideNav: boolean = false
   @Output() toggleSideNav = new EventEmitter();
 
-  ngOnInit() {
-    this.openCart();
-  }
 
   navigateToHomePage(): void {
     this._router.navigateByUrl('/');
