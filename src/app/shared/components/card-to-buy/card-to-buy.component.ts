@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from "@angular/material/card";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
-import { CardToBuy } from "../../interfaces";
+import { CommonModule }             from '@angular/common';
+import { Component, Input, inject } from '@angular/core';
+import { MatButtonModule }          from '@angular/material/button';
+import { MatCardModule }            from '@angular/material/card';
+import { MatIconModule }            from '@angular/material/icon';
+import { CardToBuy }                from '../../interfaces';
+import { CartService }              from '../../services/cart.service';
 
 @Component({
   selector: 'app-card-to-buy',
@@ -14,6 +15,11 @@ import { CardToBuy } from "../../interfaces";
 })
 
 export class CardToBuyComponent {
+  cartService: CartService = inject(CartService)
   @Input() cardToBuy: CardToBuy | undefined
 
+
+  addToCart(id: string): void {
+    this.cartService.add(id)
+  }
 }

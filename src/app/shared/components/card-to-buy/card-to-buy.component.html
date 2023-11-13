@@ -14,7 +14,7 @@
 
   <mat-card-actions class="card-buy__actions" [hidden]="true">
     <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1">Buy now</button>
-    <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1">
+    <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1" (click)="addToCart(cardToBuy.id)">
       <mat-icon class="material-icons-outlined">shopping_cart</mat-icon>
     </button>
   </mat-card-actions>

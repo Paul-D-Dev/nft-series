@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
-  add(): void {
-
+  add(id: string): void {
+    console.log('add ', id)
   }
 
   remove(): void {
