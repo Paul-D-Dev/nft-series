@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule }     from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { RouterLink } from '@angular/router';
-import { CardLink } from '../../interfaces';
+import { MatCardModule }    from '@angular/material/card';
+import { RouterLink }       from '@angular/router';
+import { CardLink }         from '../../interfaces';
 
 @Component({
   selector: 'app-card-link',
@@ -12,5 +12,5 @@ import { CardLink } from '../../interfaces';
   styleUrls: ['./card-link.component.scss']
 })
 export class CardLinkComponent {
-  @Input() cardLinkData!: CardLink
+  @Input({ required: true }) cardLinkData!: CardLink
 }

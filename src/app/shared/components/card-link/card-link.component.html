@@ -1,4 +1,4 @@
-<mat-card class="card" [routerLink]="['collections', cardLinkData.nameSeo]">
+<mat-card *ngIf="cardLinkData" class="card" [routerLink]="['collections', cardLinkData.nameSeo]">
   <div class="card__image__container">
     <img mat-card-image [src]="cardLinkData.imgUrl" alt="ing">
   </div>
