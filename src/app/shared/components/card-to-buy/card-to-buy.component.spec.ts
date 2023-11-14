@@ -8,7 +8,6 @@ import { MatIconHarness }                 from '@angular/material/icon/testing';
 import { By }                             from '@angular/platform-browser';
 import { cardToBuyMock }                  from '../../../mocks';
 import { CardToBuy }                      from '../../interfaces';
-import { CartService }                    from '../../services/cart.service';
 import { CardToBuyComponent }             from './card-to-buy.component';
 
 fdescribe('CardToBuyComponent', () => {
@@ -16,17 +15,11 @@ fdescribe('CardToBuyComponent', () => {
   let fixture: ComponentFixture<CardToBuyComponent>;
   let loader: HarnessLoader;
   let elementDebug: DebugElement;
-  let cartServiceSpy: jasmine.SpyObj<CartService>
   const mockCardToBuyData: CardToBuy = cardToBuyMock;
 
   beforeEach(() => {
-    cartServiceSpy = jasmine.createSpyObj('CartService', ['add']);
-
     TestBed.configureTestingModule({
       imports: [CardToBuyComponent],
-      providers: [
-        { CartService, useValue: cartServiceSpy }
-      ]
     });
     fixture = TestBed.createComponent(CardToBuyComponent);
     component = fixture.componentInstance;
@@ -56,8 +49,8 @@ fdescribe('CardToBuyComponent', () => {
       fixture.detectChanges();
     })
 
-    it('should input be defined', () => {
-      expect(component.cardToBuy).toBeDefined();
+    it('should use cardToBuy selector as input', () => {
+      expect(component.cardToBuy).toEqual(mockCardToBuyData);
     });
 
     it('should create a mat-card', async () => {
@@ -130,17 +123,19 @@ fdescribe('CardToBuyComponent', () => {
       expect(await shoppingIconEl.hasClass('material-icons-outlined')).toBeTrue();
     })
 
-    it('should call addToCart', async () => {
-      spyOn(component, 'addToCart');
-      const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
-      expect(await shoppingCartButton).toBeTruthy();
+    describe('output: addToCard', () => {
 
-      await shoppingCartButton.click();
-      expect(component.addToCart).toHaveBeenCalledWith(mockCardToBuyData.id);
-      expect(component.addToCart).toHaveBeenCalledTimes(1);
+      fit('should emit card id to be added', async () => {
+        spyOn(component.addToCart, 'emit');
+        const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
+        expect(await shoppingCartButton).toBeTruthy();
 
-      // TODO test call cardService.add();
-      // expect(cartServiceSpy.add.calls.any()).withContext('add called').toBe(true);
+        await shoppingCartButton.click();
+
+        fixture.detectChanges();
+        expect(component.addToCart.emit).toHaveBeenCalledWith(mockCardToBuyData.id);
+        expect(component.addToCart.emit).toHaveBeenCalledTimes(1);
+      })
     })
   })
 
