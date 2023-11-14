@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "nft-series",
+    "source": "dist/nft-series",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  }
+}
