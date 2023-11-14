@@ -10,7 +10,7 @@ import { CardLink }                   from '../../interfaces';
 import { CardLinkComponent }          from './card-link.component';
 
 
-fdescribe('CardLinkComponent', () => {
+describe('CardLinkComponent', () => {
   let component: CardLinkComponent;
   let fixture: ComponentFixture<CardLinkComponent>;
   let loader: HarnessLoader;
