@@ -1,5 +1,5 @@
 import { CommonModule }             from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule }          from '@angular/material/button';
 import { MatCardModule }            from '@angular/material/card';
 import { MatIconModule }            from '@angular/material/icon';
@@ -16,7 +16,7 @@ import { CartService }              from '../../services/cart.service';
 
 export class CardToBuyComponent {
   cartService: CartService = inject(CartService)
-  @Input() cardToBuy: CardToBuy | undefined
+  @Input({ required: true }) cardToBuy: CardToBuy | undefined
 
 
   addToCart(id: string): void {
