@@ -129,19 +129,20 @@ fdescribe('CardToBuyComponent', () => {
       const shoppingIconEl = await shoppingIcon.host();
       expect(await shoppingIconEl.hasClass('material-icons-outlined')).toBeTrue();
     })
+
+    it('should call addToCart', async () => {
+      spyOn(component, 'addToCart');
+      const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
+      expect(await shoppingCartButton).toBeTruthy();
+
+      await shoppingCartButton.click();
+      expect(component.addToCart).toHaveBeenCalledWith(mockCardToBuyData.id);
+      expect(component.addToCart).toHaveBeenCalledTimes(1);
+
+      // TODO test call cardService.add();
+      // expect(cartServiceSpy.add.calls.any()).withContext('add called').toBe(true);
+    })
   })
 
 
-  xit('should call addToCart', async () => {
-    spyOn(component, 'addToCart');
-    const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
-    expect(await shoppingCartButton).toBeTruthy();
-
-    await shoppingCartButton.click();
-    expect(component.addToCart).toHaveBeenCalledWith(mockCardToBuyData.id);
-    expect(component.addToCart).toHaveBeenCalledTimes(1);
-
-    // TODO test call cardService.add();
-    // expect(cartServiceSpy.add.calls.any()).withContext('add called').toBe(true);
-  })
 });
