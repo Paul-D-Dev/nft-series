@@ -1,7 +1,7 @@
 <app-nav-bar [isActiveSideNav]="drawer.opened" (toggleSideNav)="drawer.toggle()"/>
 
 <mat-drawer-container [hasBackdrop]="true">
-  <mat-drawer #drawer mode="side" class="drawer__sidenav">
+  <mat-drawer #drawer mode="over" class="drawer__sidenav full-screen">
     <mat-list>
       <mat-list-item>
         <mat-icon matListItemIcon>{{Icons.DarkMode}}</mat-icon>
@@ -12,7 +12,7 @@
       </mat-list-item>
     </mat-list>
   </mat-drawer>
-  <mat-drawer-content class="drawer__content">
+  <mat-drawer-content class="drawer__content full-screen">
     <main class="main__wrapper">
       <router-outlet></router-outlet>
     </main>

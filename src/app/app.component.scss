@@ -1,5 +1,17 @@
+$nav-bar-height: var(--nav-bar-height);
+
+mat-drawer-container {
+  margin-top: calc(-1 * $nav-bar-height);
+}
+
 .drawer__content {
-  height: calc(100dvh - var(--nav-bar-height));
+  height: 100dvh;
+  padding-top: $nav-bar-height;
+
+  &.full-screen {
+    padding-top: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
 
   .main__wrapper {
     height: inherit;
@@ -8,6 +20,7 @@
 
 .drawer__sidenav {
   width: 100dvw;
+  padding-top: $nav-bar-height;
 
   .mdc-list-item--with-leading-icon .mdc-list-item__start {
     margin-right: 1rem !important;
