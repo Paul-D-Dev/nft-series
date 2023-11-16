@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, TemplateRef, ContentChild } from '@angular/core';
-import { SwiperOptions } from 'swiper/types';
-import { SwiperDirective } from '../../directives/swiper.directive';
+import { CommonModule }                                                        from '@angular/common';
+import { Component, ContentChild, CUSTOM_ELEMENTS_SCHEMA, Input, TemplateRef } from '@angular/core';
+import { SwiperOptions }                                                       from 'swiper/types';
+import { SwiperDirective }                                                     from '../../directives/swiper.directive';
 
 @Component({
   selector: 'app-swiper',
@@ -17,7 +17,7 @@ export class SwiperComponent {
     navigation: true,
     spaceBetween: 16,
     breakpoints: {
-      '@0.75': {
+      '@0.55': {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 20,
