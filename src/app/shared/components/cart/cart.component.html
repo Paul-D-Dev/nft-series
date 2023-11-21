@@ -17,40 +17,12 @@
         </div>
 
         <mat-list class="cart__main__list">
-          <mat-list-item lines="3">
+          <mat-list-item lines="3" *ngFor="let item of cart.items">
             <div matListItemAvatar></div>
             <ul class="cart__main__list__items">
-              <li>Monster Party #1507</li>
-              <li>Monster Party</li>
-              <li>0,01 ETH</li>
-              <li>Creator earnings: 5%</li>
-            </ul>
-            <div matListItemMeta class="cart__main__list__action">
-              <button mat-icon-button>
-                <mat-icon>{{Icons.Delete}}</mat-icon>
-              </button>
-            </div>
-          </mat-list-item>
-          <mat-list-item lines="3">
-            <div matListItemAvatar></div>
-            <ul class="cart__main__list__items">
-              <li>Monster Party #1507</li>
-              <li>Monster Party</li>
-              <li>0,01 ETH</li>
-              <li>Creator earnings: 5%</li>
-            </ul>
-            <div matListItemMeta class="cart__main__list__action">
-              <button mat-icon-button>
-                <mat-icon>{{Icons.Delete}}</mat-icon>
-              </button>
-            </div>
-          </mat-list-item>
-          <mat-list-item lines="3">
-            <div matListItemAvatar></div>
-            <ul class="cart__main__list__items">
-              <li>Monster Party #1507</li>
-              <li>Monster Party</li>
-              <li>0,01 ETH</li>
+              <li>{{item.title}}</li>
+              <li>{{item.creator}}</li>
+              <li>{{item.price}} {{item.currency}}</li>
               <li>Creator earnings: 5%</li>
             </ul>
             <div matListItemMeta class="cart__main__list__action">
