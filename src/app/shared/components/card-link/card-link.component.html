@@ -1,14 +1,14 @@
 <mat-card *ngIf="cardLinkData" class="card" [routerLink]="['collections', cardLinkData.nameSeo]">
-  <div class="card__image__container">
-    <img mat-card-image [src]="cardLinkData.imgUrl" alt="ing">
-  </div>
-  <mat-card-content>
-    <p class="card__content__title">{{cardLinkData.title}}</p>
-    <div class="card__content__details">
-      <div class="card__content__details__floor">
-        <span>Floor</span>
-        <span>{{cardLinkData.floor}} {{cardLinkData.devise}}</span>
-      </div>
+    <div class="card__image__container">
+        <img mat-card-image [src]="cardLinkData.img.src" [alt]="cardLinkData.img.alt">
     </div>
-  </mat-card-content>
+    <mat-card-content>
+        <p class="card__content__title">{{cardLinkData.title}}</p>
+        <div class="card__content__details">
+            <div class="card__content__details__floor">
+                <span>Floor</span>
+                <span>{{cardLinkData.floor}} {{cardLinkData.currency}}</span>
+            </div>
+        </div>
+    </mat-card-content>
 </mat-card>

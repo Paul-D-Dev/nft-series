@@ -1,8 +1,6 @@
-import { Card } from './card.interface';
+import { CardNFT } from './card-nft.interface';
 
-export interface CardLink extends Card {
-  id: number;
+export interface CardLink extends CardNFT {
   nameSeo: string;
   floor: number;
-  devise: string;
 }

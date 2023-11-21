@@ -1,13 +1,7 @@
-export interface CardToBuy {
-  id: string,
+import { CardNFT } from "./card-nft.interface";
+
+export interface CardToBuy extends CardNFT {
   idListing: number,
-  title: string,
-  price: number,
-  currency: string,
-  img: {
-    src: string,
-    alt: string
-  },
   lastSale?: {
     price: number,
     currency: string
