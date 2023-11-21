@@ -1,6 +1,6 @@
 import { Injectable }                  from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
-import { Cart, CartItem }              from "../interfaces/cart.interface";
+import { CardNFT, Cart }               from "../interfaces";
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,18 @@ export class CartService {
     return this.cart$.asObservable();
   }
 
-  add(item: CartItem): void {
+  add(item: CardNFT): void {
     console.log('add ', item);
-    const items: CartItem[] = [...this.cart$.value.items];
+    const items: CardNFT[] = [...this.cart$.value.items];
 
-    const itemInCart: CartItem | undefined = items.find(_item => _item.id === item.id);
-    if (itemInCart) {
-      itemInCart.quantity += 1;
-    } else {
+    const itemInCart: CardNFT | undefined = items.find(_item => _item.id === item.id);
+    if (!itemInCart) {
       items.push(item);
+      this.cart$.next({ items });
+    } else {
+      // TODO alert user the item is already in the cart
     }
 
-    this.cart$.next({ items });
   }
 
   remove(): void {
