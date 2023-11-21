@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule }                        from '@angular/material/button';
 import { MatCardModule }                          from '@angular/material/card';
 import { MatIconModule }                          from '@angular/material/icon';
-import { CardToBuy }                              from '../../interfaces';
+import { CardNFT, CardToBuy }                     from '../../interfaces';
 
 @Component({
   selector: 'app-card-to-buy',
@@ -15,5 +15,5 @@ import { CardToBuy }                              from '../../interfaces';
 
 export class CardToBuyComponent {
   @Input({ required: true }) cardToBuy: CardToBuy | undefined;
-  @Output() addToCart = new EventEmitter<string>();
+  @Output() addToCart = new EventEmitter<CardNFT>();
 }

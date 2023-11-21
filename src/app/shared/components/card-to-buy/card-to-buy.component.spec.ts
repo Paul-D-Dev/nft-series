@@ -133,7 +133,7 @@ fdescribe('CardToBuyComponent', () => {
         await shoppingCartButton.click();
 
         fixture.detectChanges();
-        expect(component.addToCart.emit).toHaveBeenCalledWith(mockCardToBuyData.id);
+        expect(component.addToCart.emit).toHaveBeenCalledWith(mockCardToBuyData);
         expect(component.addToCart.emit).toHaveBeenCalledTimes(1);
       })
     })
