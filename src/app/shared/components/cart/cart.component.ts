@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { DialogRef }                           from '@angular/cdk/dialog';
 import { CommonModule }                        from '@angular/common';
 import { Component, Input }                    from '@angular/core';
@@ -6,6 +6,9 @@ import { MatButtonModule }                     from '@angular/material/button';
 import { MatIconModule }                       from '@angular/material/icon';
 import { MatListModule }                       from '@angular/material/list';
 import { Icons }                               from '../../enums';
+import { CartService }                         from "../../services/cart.service";
+import { Observable }                          from "rxjs";
+import { Cart }                                from "../../interfaces/cart.interface";
 
 const slideInOutAnimationTime = 150;
 
@@ -28,13 +31,16 @@ const slideInOutAnimationTime = 150;
   ]
 })
 export class CartComponent {
-  constructor(public dialogRef: DialogRef) {
+  constructor(public dialogRef: DialogRef, private cartService: CartService) {
     this.isOpened = true;
     this.dialogRef.disableClose = true;
     this.dialogRef.backdropClick.subscribe(() => {
       this._closeDialogWithAnimation();
     })
   }
+
+  cart$: Observable<Cart | undefined> = this.cartService.getCart$();
+
 
   protected readonly Icons = Icons;
   isOpened = true;
