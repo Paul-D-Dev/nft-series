@@ -16,7 +16,7 @@ import { MatTabsModule }            from '@angular/material/tabs';
 import { cardToBuyMock }            from '../../mocks';
 import { CardToBuyComponent }       from '../../shared/components/card-to-buy/card-to-buy.component';
 import { Icons }                    from '../../shared/enums';
-import { CardNFT }                  from "../../shared/interfaces";
+import { CardNFT, CardToBuy }       from "../../shared/interfaces";
 import { CartService }              from "../../shared/services/cart.service";
 
 interface CollectionDetail {
@@ -60,7 +60,7 @@ export class CollectionDetailPage {
   }
 
   protected readonly Icons = Icons;
-  protected readonly cardToBuyMock = cardToBuyMock
+  protected readonly cardToBuyList: CardToBuy[] = [cardToBuyMock, { ...cardToBuyMock, id: '4', idListing: '1111' }]
   isOpenedFilters: boolean = false;
   collectionDetail: CollectionDetail | null = {
     imgAvatar: 'https://kultt.fr/wp-content/uploads/2022/02/poster-freaks_02.jpg',

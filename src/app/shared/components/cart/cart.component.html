@@ -1,26 +1,27 @@
 <!-- use ngIf=isOpened to trigger :leave transition -->
 <aside @slideInOut *ngIf="isOpened" class="cart">
-  <header class="cart__header">
-    <h2>Your cart</h2>
-    <button mat-icon-button (click)="closeCart()">
-      <mat-icon>{{Icons.Close}}</mat-icon>
-    </button>
-  </header>
+  <ng-container *ngIf="cart$ | async as cart">
 
-  <main class="cart__main">
-    <ng-container *ngIf="cart$ | async as cart">
+    <header class="cart__header">
+      <h2>Your cart</h2>
+      <button mat-icon-button (click)="closeCart()">
+        <mat-icon>{{Icons.Close}}</mat-icon>
+      </button>
+    </header>
+
+    <main class="cart__main">
       <ng-container *ngIf="cart.items.length > 0; else noItemsList">
         <div class="cart__main__header">
 
-          <span>{{items.length}} items</span>
+          <span>{{cart.items.length}} items</span>
           <button mat-button (click)="clearCart()">Clear all</button>
         </div>
 
         <mat-list class="cart__main__list">
-          <mat-list-item lines="3" *ngFor="let item of cart.items">
+          <mat-list-item lines="3" *ngFor="let item of cart.items; trackBy: trackByFn">
             <div matListItemAvatar></div>
             <ul class="cart__main__list__items">
-              <li>{{item.title}}</li>
+              <li>{{item.title}} {{item.idListing}}</li>
               <li>{{item.creator}}</li>
               <li>{{item.price}} {{item.currency}}</li>
               <li>Creator earnings: 5%</li>
@@ -39,25 +40,25 @@
           Add items to get started.
         </div>
       </ng-template>
-    </ng-container>
 
 
-  </main>
+    </main>
 
-  <footer class="cart__footer">
-    <div *ngIf="items.length > 0" class="cart__footer__price">
-      <span class="bold">Total price</span>
-      <div class="cart__footer__price__currencies">
-        <span class="bold">0,589 ETH</span>
-        <span>$1 116,80</span>
+    <footer class="cart__footer">
+      <div *ngIf="cart.items.length > 0" class="cart__footer__price">
+        <span class="bold">Total price</span>
+        <div class="cart__footer__price__currencies">
+          <span class="bold">{{totalCart$ | async}}</span>
+          <span>$1 116,80</span>
+        </div>
       </div>
-    </div>
-    <button
-      mat-flat-button
-      color="accent"
-      [disabled]="items.length === 0"
-    >
-      Complete purchase
-    </button>
-  </footer>
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="cart.items.length === 0"
+      >
+        Complete purchase
+      </button>
+    </footer>
+  </ng-container>
 </aside>

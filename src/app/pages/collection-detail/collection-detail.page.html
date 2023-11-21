@@ -137,7 +137,7 @@
         <mat-drawer-content class="cd__tab__items__main">
 
           <section class="section__grid" [class.grid-reduced-columns]="isOpenedFilters">
-            <ng-container *ngFor="let cardToBuy of [cardToBuyMock]">
+            <ng-container *ngFor="let cardToBuy of cardToBuyList">
               <app-card-to-buy
                 [cardToBuy]="cardToBuy"
                 (addToCart)="onAddToCart($event)"

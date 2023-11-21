@@ -1,15 +1,14 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { DialogRef }                           from '@angular/cdk/dialog';
 import { CommonModule }                        from '@angular/common';
-import { Component, Input }                    from '@angular/core';
+import { Component }                           from '@angular/core';
 import { MatButtonModule }                     from '@angular/material/button';
 import { MatIconModule }                       from '@angular/material/icon';
 import { MatListModule }                       from '@angular/material/list';
 import { Icons }                               from '../../enums';
 import { CartService }                         from "../../services/cart.service";
 import { Observable }                          from "rxjs";
-import { Cart }                                from "../../interfaces/cart.interface";
-import { CardNFT }                             from "../../interfaces";
+import { CardNFT, Cart }                       from "../../interfaces";
 
 const slideInOutAnimationTime = 150;
 
@@ -41,13 +40,12 @@ export class CartComponent {
   }
 
   cart$: Observable<Cart | undefined> = this.cartService.getCart$();
+  totalCart$: Observable<number> = this.cartService.getTotalCart$();
 
 
   protected readonly Icons = Icons;
   isOpened = true;
   isDisabled: boolean = false;
-
-  @Input() items: unknown[] = [];
 
   closeCart(): void {
     this._closeDialogWithAnimation();
@@ -59,6 +57,11 @@ export class CartComponent {
 
   clearCart(): void {
     this.cartService.clearAll();
+  }
+
+  trackByFn(i: number, item: any) {
+    console.log(item)
+    return item ? item : undefined
   }
 
   private _closeDialogWithAnimation() {
