@@ -6,7 +6,6 @@ export interface CardNFT {
     src: string,
     alt: string
   },
-  price: number,
   currency: string,
 
 }
