@@ -66,11 +66,11 @@ describe('CardLinkComponent', () => {
       const floorDe = elementDebug.query(By.css('.card__content__details__floor'));
       const floorEl: HTMLElement = floorDe.nativeElement;
       expect(floorEl.textContent).toContain('Floor');
-      expect(floorEl.textContent).toContain(`${mockCardData.floor} ${mockCardData.devise}`);
+      expect(floorEl.textContent).toContain(`${mockCardData.floor} ${mockCardData.currency}`);
 
       const imgDe = elementDebug.query(By.css('.mat-mdc-card-image'));
       const imgEl: HTMLImageElement = imgDe.nativeElement;
-      expect(imgEl.src).toContain(mockCardData.imgUrl);
+      expect(imgEl.src).toContain(mockCardData.img.src);
     })
 
     it('should have a routerLink with the correct URL', async () => {
