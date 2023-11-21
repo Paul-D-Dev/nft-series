@@ -138,7 +138,10 @@
 
           <section class="section__grid" [class.grid-reduced-columns]="isOpenedFilters">
             <ng-container *ngFor="let cardToBuy of [cardToBuyMock]">
-              <app-card-to-buy [cardToBuy]="cardToBuy"></app-card-to-buy>
+              <app-card-to-buy
+                [cardToBuy]="cardToBuy"
+                (addToCart)="onAddToCart($event)"
+              ></app-card-to-buy>
             </ng-container>
           </section>
 
