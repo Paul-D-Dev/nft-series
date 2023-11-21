@@ -58,7 +58,7 @@ export class CartComponent {
   }
 
   clearCart(): void {
-    console.log('clear cart');
+    this.cartService.clearAll();
   }
 
   private _closeDialogWithAnimation() {

@@ -31,6 +31,10 @@ export class CartService {
     this.cart$.next({ items: filteredItems });
   }
 
+  clearAll(): void {
+    this.cart$.next({ items: [] });
+  }
+
   checkOut(): void {
 
   }
