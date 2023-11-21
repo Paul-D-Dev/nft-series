@@ -14,7 +14,6 @@ export class CartService {
   }
 
   add(item: CardNFT): void {
-    console.log('add ', item);
     const items: CardNFT[] = [...this.cart$.value.items];
 
     const itemInCart: CardNFT | undefined = items.find(_item => _item.id === item.id);
@@ -27,8 +26,9 @@ export class CartService {
 
   }
 
-  remove(): void {
-
+  remove(item: CardNFT): void {
+    const filteredItems = this.cart$.value.items.filter(_item => _item.id !== item.id);
+    this.cart$.next({ items: filteredItems });
   }
 
   checkOut(): void {
