@@ -9,6 +9,7 @@ import { Icons }                               from '../../enums';
 import { CartService }                         from "../../services/cart.service";
 import { Observable }                          from "rxjs";
 import { Cart }                                from "../../interfaces/cart.interface";
+import { CardNFT }                             from "../../interfaces";
 
 const slideInOutAnimationTime = 150;
 
@@ -50,6 +51,10 @@ export class CartComponent {
 
   closeCart(): void {
     this._closeDialogWithAnimation();
+  }
+
+  onRemoveItemCart(item: CardNFT): void {
+    this.cartService.remove(item);
   }
 
   clearCart(): void {
