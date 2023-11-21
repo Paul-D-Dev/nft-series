@@ -18,7 +18,6 @@ import { CardToBuyComponent }       from '../../shared/components/card-to-buy/ca
 import { Icons }                    from '../../shared/enums';
 import { CardNFT }                  from "../../shared/interfaces";
 import { CartService }              from "../../shared/services/cart.service";
-import { CartItem }                 from "../../shared/interfaces/cart.interface";
 
 interface CollectionDetail {
   imgBanner: string;
@@ -93,11 +92,7 @@ export class CollectionDetailPage {
   }
 
   onAddToCart(card: CardNFT): void {
-    const mapCardToCartItem: CartItem = {
-      ...card,
-      quantity: 1,
-    }
-    this.cartService.add(mapCardToCartItem);
+    this.cartService.add(card);
   }
 
 }
