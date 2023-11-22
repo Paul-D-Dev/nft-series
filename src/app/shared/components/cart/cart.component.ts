@@ -8,7 +8,10 @@ import { MatListModule }                       from '@angular/material/list';
 import { Icons }                               from '../../enums';
 import { CartService }                         from "../../services/cart.service";
 import { Observable }                          from "rxjs";
-import { CardNFT, Cart }                       from "../../interfaces";
+import { CardNFT }                             from "../../interfaces";
+import { Store }                               from "@ngrx/store";
+import { CartActions, selectCart }             from "../../store/cart";
+import { AppState }                            from "../../store";
 
 const slideInOutAnimationTime = 150;
 
@@ -31,7 +34,7 @@ const slideInOutAnimationTime = 150;
   ]
 })
 export class CartComponent {
-  constructor(public dialogRef: DialogRef, private cartService: CartService) {
+  constructor(public dialogRef: DialogRef, private cartService: CartService, private store: Store<AppState>) {
     this.isOpened = true;
     this.dialogRef.disableClose = true;
     this.dialogRef.backdropClick.subscribe(() => {
@@ -39,7 +42,7 @@ export class CartComponent {
     })
   }
 
-  cart$: Observable<Cart | undefined> = this.cartService.getCart$();
+  cartItems$: Observable<CardNFT[]> = this.store.select(selectCart)
   totalCart$: Observable<number> = this.cartService.getTotalCart$();
 
 
@@ -52,11 +55,11 @@ export class CartComponent {
   }
 
   onRemoveItemCart(item: CardNFT): void {
-    this.cartService.remove(item);
+    this.store.dispatch(CartActions.remove({ item }))
   }
 
   clearCart(): void {
-    this.cartService.clearAll();
+    this.store.dispatch(CartActions.clear());
   }
 
   trackByFn(i: number, item: any) {
