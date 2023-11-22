@@ -25,6 +25,7 @@
     "@metamask/detect-provider": "^2.0.0",
     "@ngrx/effects": "^17.0.0",
     "@ngrx/store": "^17.0.0",
+    "@ngrx/store-devtools": "^17.0.0",
     "node-sass": "^9.0.0",
     "rxjs": "~7.8.0",
     "swiper": "^10.0.4",
