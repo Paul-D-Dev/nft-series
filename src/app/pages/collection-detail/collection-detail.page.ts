@@ -18,6 +18,9 @@ import { CardToBuyComponent }       from '../../shared/components/card-to-buy/ca
 import { Icons }                    from '../../shared/enums';
 import { CardNFT, CardToBuy }       from "../../shared/interfaces";
 import { CartService }              from "../../shared/services/cart.service";
+import { AppState }                 from "../../shared/store";
+import { Store }                    from "@ngrx/store";
+import { CartActions }              from "../../shared/store/cart";
 
 interface CollectionDetail {
   imgBanner: string;
@@ -53,6 +56,7 @@ export class CollectionDetailPage {
   }
 
   cartService = inject(CartService);
+  store = inject(Store<AppState>);
 
   @Input()
   set collectionName(name: string) {
@@ -91,8 +95,8 @@ export class CollectionDetailPage {
     this.isOpenedFilters = !this.isOpenedFilters;
   }
 
-  onAddToCart(card: CardNFT): void {
-    this.cartService.add(card);
+  onAddToCart(item: CardNFT): void {
+    this.store.dispatch(CartActions.add({ item }));
   }
 
 }
