@@ -1,24 +1,25 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { DialogRef }                           from '@angular/cdk/dialog';
-import { CommonModule }                        from '@angular/common';
-import { Component }                           from '@angular/core';
-import { MatButtonModule }                     from '@angular/material/button';
-import { MatIconModule }                       from '@angular/material/icon';
-import { MatListModule }                       from '@angular/material/list';
-import { Icons }                               from '../../enums';
-import { CartService }                         from "../../services/cart.service";
-import { Observable }                          from "rxjs";
-import { CardNFT }                             from "../../interfaces";
-import { Store }                               from "@ngrx/store";
-import { CartActions, selectCart }             from "../../store/cart";
-import { AppState }                            from "../../store";
+import { animate, style, transition, trigger }           from '@angular/animations';
+import { DialogRef }                                     from '@angular/cdk/dialog';
+import { CommonModule }                                  from '@angular/common';
+import { Component }                                     from '@angular/core';
+import { MatButtonModule }                               from '@angular/material/button';
+import { MatIconModule }                                 from '@angular/material/icon';
+import { MatListModule }                                 from '@angular/material/list';
+import { Icons }                                         from '../../enums';
+import { CartService }                                   from "../../services/cart.service";
+import { Observable }                                    from "rxjs";
+import { CardNFT }                                       from "../../interfaces";
+import { Store }                                         from "@ngrx/store";
+import { CartActions, selectCart, selectTotalValueCart } from "../../store/cart";
+import { AppState }                                      from "../../store";
+import { LetDirective }                                  from "@ngrx/component";
 
 const slideInOutAnimationTime = 150;
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatListModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatListModule, LetDirective],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
   animations: [
@@ -43,12 +44,11 @@ export class CartComponent {
   }
 
   cartItems$: Observable<CardNFT[]> = this.store.select(selectCart)
-  totalCart$: Observable<number> = this.cartService.getTotalCart$();
+  totalCart$: Observable<number> = this.store.select(selectTotalValueCart);
 
 
   protected readonly Icons = Icons;
   isOpened = true;
-  isDisabled: boolean = false;
 
   closeCart(): void {
     this._closeDialogWithAnimation();
