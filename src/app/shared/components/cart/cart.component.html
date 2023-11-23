@@ -1,6 +1,6 @@
 <!-- use ngIf=isOpened to trigger :leave transition -->
 <aside @slideInOut *ngIf="isOpened" class="cart">
-  <ng-container *ngIf="cartItems$ | async as cart">
+  <ng-container *ngrxLet="cartItems$ as cart">
 
     <header class="cart__header">
       <h2>Your cart</h2>
@@ -18,10 +18,10 @@
         </div>
 
         <mat-list class="cart__main__list">
-          <mat-list-item lines="3" *ngFor="let item of cart; trackBy: trackByFn">
+          <mat-list-item class="cart__main__list__item" lines="3" *ngFor="let item of cart; trackBy: trackByFn">
             <div matListItemAvatar></div>
-            <ul class="cart__main__list__items">
-              <li>{{item.title}} {{item.idListing}}</li>
+            <span matListItemTitle class="cart__main__list__item__title">{{item.title}} {{item.idListing}}</span>
+            <ul matListItemLine class="cart__main__list__item__details">
               <li>{{item.creator}}</li>
               <li>{{item.price}} {{item.currency}}</li>
               <li>Creator earnings: 5%</li>
@@ -48,7 +48,7 @@
       <div *ngIf="cart.length > 0" class="cart__footer__price">
         <span class="bold">Total price</span>
         <div class="cart__footer__price__currencies">
-          <span class="bold">{{totalCart$ | async}}</span>
+          <span class="bold">{{totalCart$ | async}} ETH</span>
           <span>$1 116,80</span>
         </div>
       </div>

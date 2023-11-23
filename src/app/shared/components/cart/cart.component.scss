@@ -42,13 +42,23 @@ $primary-color: var(--clr-text);
     &__list {
       overflow-y: auto;
 
-      &__items {
-        li:first-of-type {
-          font-weight: bold;
+      &__item {
+        &:not(:last-of-type) {
+          margin-bottom: 1rem;
         }
 
-        li:last-of-type {
-          font-weight: lighter;
+        &__title:before, &__title:after {
+          content: none
+        }
+
+        &__details {
+          li:first-of-type {
+            font-weight: bold;
+          }
+
+          li:last-of-type {
+            font-weight: lighter;
+          }
         }
       }
 
