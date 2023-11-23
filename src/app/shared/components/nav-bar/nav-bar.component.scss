@@ -2,6 +2,10 @@
   height: var(--nav-bar-height);
 }
 
+.brand__name {
+  width: fit-content;
+}
+
 .cart__button {
   min-width: 50px;
 
