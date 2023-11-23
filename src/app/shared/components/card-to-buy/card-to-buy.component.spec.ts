@@ -10,7 +10,7 @@ import { cardToBuyMock }                  from '../../../mocks';
 import { CardToBuy }                      from '../../interfaces';
 import { CardToBuyComponent }             from './card-to-buy.component';
 
-fdescribe('CardToBuyComponent', () => {
+describe('CardToBuyComponent', () => {
   let component: CardToBuyComponent;
   let fixture: ComponentFixture<CardToBuyComponent>;
   let loader: HarnessLoader;
@@ -125,7 +125,7 @@ fdescribe('CardToBuyComponent', () => {
 
     describe('output: addToCard', () => {
 
-      fit('should emit card id to be added', async () => {
+      it('should emit card id to be added', async () => {
         spyOn(component.addToCart, 'emit');
         const shoppingCartButton = await loader.getHarness(MatButtonHarness.with({ selector: '.shopping__cart' }));
         expect(await shoppingCartButton).toBeTruthy();
