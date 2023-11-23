@@ -13,14 +13,16 @@ import { AppState }                    from "../../store";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
 import { selectCartTotalItem }         from "../../store/cart";
 import { MatBadgeHarness }             from "@angular/material/badge/testing";
+import { CartComponent }               from "../cart/cart.component";
 
-describe('NavBarComponent', () => {
+fdescribe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let loader: HarnessLoader;
   let elementDebug: DebugElement;
   let store: MockStore
   const routerSpy: jasmine.SpyObj<Router> = jasmine.createSpyObj('Router', ['navigateByUrl']);
+  // const dialogSpy = jasmine.createSpyObj('Dialog', ['open']);
   const initialState: AppState = {
     cart: {
       items: []
@@ -33,6 +35,7 @@ describe('NavBarComponent', () => {
       providers: [
         { provide: Router, useValue: routerSpy, },
         provideMockStore({ initialState }),
+        // { provide: Dialog, useValue: dialogSpy }
       ]
     })
     fixture = TestBed.createComponent(NavBarComponent);
@@ -68,6 +71,13 @@ describe('NavBarComponent', () => {
       expect(mockCartTotalItem).toEqual(0);
     });
     done();
+  })
+
+  it('should openCart open dialog CartComponent', () => {
+    spyOn(component.dialog, 'open');
+    component.openCart();
+    fixture.detectChanges();
+    expect(component.dialog.open).toHaveBeenCalledOnceWith(CartComponent);
   })
 
   describe('ui', () => {
