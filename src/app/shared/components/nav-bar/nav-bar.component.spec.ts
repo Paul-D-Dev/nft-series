@@ -15,7 +15,7 @@ import { selectCartTotalItem }         from "../../store/cart";
 import { MatBadgeHarness }             from "@angular/material/badge/testing";
 import { CartComponent }               from "../cart/cart.component";
 
-fdescribe('NavBarComponent', () => {
+describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let loader: HarnessLoader;
