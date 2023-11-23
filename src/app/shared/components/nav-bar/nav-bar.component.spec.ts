@@ -22,7 +22,6 @@ describe('NavBarComponent', () => {
   let elementDebug: DebugElement;
   let store: MockStore
   const routerSpy: jasmine.SpyObj<Router> = jasmine.createSpyObj('Router', ['navigateByUrl']);
-  // const dialogSpy = jasmine.createSpyObj('Dialog', ['open']);
   const initialState: AppState = {
     cart: {
       items: []
@@ -35,7 +34,6 @@ describe('NavBarComponent', () => {
       providers: [
         { provide: Router, useValue: routerSpy, },
         provideMockStore({ initialState }),
-        // { provide: Dialog, useValue: dialogSpy }
       ]
     })
     fixture = TestBed.createComponent(NavBarComponent);
