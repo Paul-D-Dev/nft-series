@@ -25,6 +25,10 @@
     <button
       aria-label="cart button"
       mat-flat-button
+      [matBadge]="totalCartItems$ | async"
+      [matBadgeHidden]="(totalCartItems$ | async) === 0"
+      matBadgeSize="small"
+      class="cart__button"
       (click)="openCart()"
     >
       <mat-icon class="material-icons-outlined">{{Icons.ShoppingCart}}</mat-icon>

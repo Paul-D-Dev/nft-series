@@ -9,20 +9,26 @@ import { Observable }                                     from 'rxjs';
 import { Icons }                                          from '../../enums';
 import { AuthService }                                    from '../../services/auth.service';
 import { CartComponent }                                  from '../cart/cart.component';
+import { MatBadgeModule }                                 from "@angular/material/badge";
+import { Store }                                          from "@ngrx/store";
+import { AppState }                                       from "../../store";
+import { selectCartTotalItem }                            from "../../store/cart";
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, DialogModule],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, DialogModule, MatBadgeModule],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
   _router: Router = inject(Router);
   private authService: AuthService = inject(AuthService);
+  private store = inject(Store<AppState>);
   dialog: Dialog = inject(Dialog);
   protected readonly Icons = Icons;
   readonly metaAddress$: Observable<string> = this.authService.metaAddress$;
+  readonly totalCartItems$: Observable<number> = this.store.select(selectCartTotalItem);
   @Input() isActiveSideNav: boolean = false
   @Output() toggleSideNav = new EventEmitter();
 

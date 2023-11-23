@@ -12,3 +12,4 @@ export const selectTotalValueCart = createSelector(
       .map(item => item.price)
       .reduce((prev, current) => prev + current, 0)
 );
+export const selectCartTotalItem = createSelector(selectFeature, (state: CartState) => state.items.length);
