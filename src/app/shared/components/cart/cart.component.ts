@@ -62,11 +62,6 @@ export class CartComponent {
     this.store.dispatch(CartActions.clear());
   }
 
-  trackByFn(i: number, item: any) {
-    console.log(item)
-    return item ? item : undefined
-  }
-
   private _closeDialogWithAnimation() {
     this.isOpened = false;
     setTimeout(() => {
