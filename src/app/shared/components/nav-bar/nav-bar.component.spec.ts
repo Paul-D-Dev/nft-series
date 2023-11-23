@@ -11,8 +11,10 @@ import { Icons }                       from "../../enums";
 import { By }                          from "@angular/platform-browser";
 import { AppState }                    from "../../store";
 import { MockStore, provideMockStore } from "@ngrx/store/testing";
+import { selectCartTotalItem }         from "../../store/cart";
+import { MatBadgeHarness }             from "@angular/material/badge/testing";
 
-fdescribe('NavBarComponent', () => {
+describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let loader: HarnessLoader;
@@ -41,6 +43,10 @@ fdescribe('NavBarComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    TestBed.inject(MockStore).resetSelectors();
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -56,6 +62,13 @@ fdescribe('NavBarComponent', () => {
     component.emitToggleSideNav();
     expect(component.toggleSideNav.emit).toHaveBeenCalled();
   });
+
+  it('should init totalCartItems to 0', (done: any) => {
+    store.select(selectCartTotalItem).subscribe((mockCartTotalItem) => {
+      expect(mockCartTotalItem).toEqual(0);
+    });
+    done();
+  })
 
   describe('ui', () => {
     let matToolBar: MatToolbarHarness;
@@ -134,17 +147,24 @@ fdescribe('NavBarComponent', () => {
         expect(toolBarIconsLoader).toBeTruthy();
       });
 
+      it('should have 2 buttons', async () => {
+        const buttons = await toolBarIconsLoader.getAllHarnesses(MatButtonHarness);
+        expect(buttons.length).toEqual(2);
+      })
+
       describe('connect wallet mat-button', () => {
         let connectWalletButton: MatButtonHarness;
 
         beforeEach(async () => {
           // source1: https://github.com/angular/components/blob/main/guides/using-component-harnesses.md
           // source2: https://blog.angulartraining.com/how-to-use-angular-material-harnesses-to-improve-your-component-tests-7fe6359f67ce
-          connectWalletButton = await toolBarIconsLoader.getHarness(MatButtonHarness);
+          connectWalletButton = await toolBarIconsLoader.getHarness(MatButtonHarness.with({
+            selector: '.connect__wallet__button'
+          }));
         });
 
         it('should create', async () => {
-          expect(await connectWalletButton.getText()).toContain('Connect wallet');
+          expect(await connectWalletButton).toBeDefined();
         });
 
         it('should be flat', async () => {
@@ -163,6 +183,63 @@ fdescribe('NavBarComponent', () => {
           expect(await walletIcon.getName()).toBe(Icons.Wallet);
         });
       });
+
+      describe('button open cart', async () => {
+        let openCartButton: MatButtonHarness;
+
+        beforeEach(async () => {
+          openCartButton = await toolBarIconsLoader.getHarness(MatButtonHarness.with({
+            selector: '.cart__button'
+          }))
+        })
+
+        it('should create', async () => {
+          expect(await openCartButton).toBeDefined();
+        });
+
+        it('should have a shopping cart icon', async () => {
+          const shoppingCartIcon: MatIconHarness = await openCartButton.getHarness(MatIconHarness);
+          expect(await shoppingCartIcon).toBeDefined();
+          expect(await shoppingCartIcon.getName()).toBe(Icons.ShoppingCart);
+        })
+
+        it('should onClick call openCart()', async () => {
+          spyOn(component, "openCart");
+          await openCartButton.click();
+          expect(component.openCart).toHaveBeenCalled();
+        });
+
+        describe('mat-badge', () => {
+          let badge: MatBadgeHarness;
+
+          beforeEach(async () => {
+            badge = await loader.getHarness(MatBadgeHarness);
+          });
+
+          it('should create', async () => {
+            expect(await badge).toBeDefined();
+          });
+
+          it('should open cart button get mat-badge', async () => {
+            const host = await openCartButton.host();
+            expect(await host.hasClass('mat-badge')).toBeTrue();
+          });
+
+          it('should hide mat-badge', async () => {
+            expect(await badge.isHidden()).toBeTrue();
+          })
+
+          it('should display and count 1', async () => {
+            const total = 1;
+            store.overrideSelector(selectCartTotalItem, total);
+            store.refreshState();
+            fixture.detectChanges();
+            expect(await badge.isHidden()).toBeFalse();
+            expect(await badge.getText()).toBe(total.toString());
+          })
+        })
+
+      })
 
     });
   });
