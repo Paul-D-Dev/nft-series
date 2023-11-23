@@ -1,33 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavBarComponent } from './nav-bar.component';
-import { Router } from "@angular/router";
-import { HarnessLoader, TestElement } from "@angular/cdk/testing";
-import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
-import { DebugElement } from "@angular/core";
-import { MatToolbarHarness } from "@angular/material/toolbar/testing";
-import { MatButtonHarness } from "@angular/material/button/testing";
-import { MatIconHarness } from "@angular/material/icon/testing";
-import { Icons } from "../../enums";
-import { By } from "@angular/platform-browser";
+import { ComponentFixture, TestBed }   from '@angular/core/testing';
+import { NavBarComponent }             from './nav-bar.component';
+import { Router }                      from "@angular/router";
+import { HarnessLoader, TestElement }  from "@angular/cdk/testing";
+import { TestbedHarnessEnvironment }   from "@angular/cdk/testing/testbed";
+import { DebugElement }                from "@angular/core";
+import { MatToolbarHarness }           from "@angular/material/toolbar/testing";
+import { MatButtonHarness }            from "@angular/material/button/testing";
+import { MatIconHarness }              from "@angular/material/icon/testing";
+import { Icons }                       from "../../enums";
+import { By }                          from "@angular/platform-browser";
+import { AppState }                    from "../../store";
+import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
-describe('NavBarComponent', () => {
+fdescribe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture: ComponentFixture<NavBarComponent>;
   let loader: HarnessLoader;
   let elementDebug: DebugElement;
+  let store: MockStore
   const routerSpy: jasmine.SpyObj<Router> = jasmine.createSpyObj('Router', ['navigateByUrl']);
+  const initialState: AppState = {
+    cart: {
+      items: []
+    }
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NavBarComponent],
-      providers: [{
-        provide: Router, useValue: routerSpy
-      }],
-    });
+      providers: [
+        { provide: Router, useValue: routerSpy, },
+        provideMockStore({ initialState }),
+      ]
+    })
     fixture = TestBed.createComponent(NavBarComponent);
     loader = TestbedHarnessEnvironment.loader(fixture);
     component = fixture.componentInstance;
     elementDebug = fixture.debugElement;
+    store = TestBed.inject(MockStore);
     fixture.detectChanges();
   });
 
