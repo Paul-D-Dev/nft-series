@@ -5,6 +5,6 @@ export const environment = {
     projectId: "ntf-series",
     storageBucket: "ntf-series.appspot.com",
     messagingSenderId: "963615637081",
-    appId: "1:963615637081:web:257219774783eeed6c7b48"
+    appId: "1:963615637081:web:d8578a3572e399c46c7b48"
   }
 };
