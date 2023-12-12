@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ntf-series"
+  },
+  "targets": {
+    "ntf-series": {
+      "hosting": {
+        "nft-series": [
+          "ntf-series"
+        ]
+      }
+    }
+  }
+}

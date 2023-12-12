@@ -55,7 +55,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "1.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -135,6 +135,23 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "nft-series:build:production",
+              "serveTarget": "nft-series:serve:production"
+            },
+            "development": {
+              "buildTarget": "nft-series:build:development",
+              "serveTarget": "nft-series:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
