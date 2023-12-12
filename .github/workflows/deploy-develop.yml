@@ -5,7 +5,7 @@ name: CI-develop
 on:
   push:
     branches:
-      - deploy-git-action
+      - develop
 
 jobs:
   build:
