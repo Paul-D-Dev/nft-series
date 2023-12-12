@@ -1,0 +1,16 @@
+.nav {
+  height: var(--nav-bar-height);
+}
+
+.brand__name {
+  width: fit-content;
+}
+
+.cart__button {
+  min-width: 50px;
+
+  mat-icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

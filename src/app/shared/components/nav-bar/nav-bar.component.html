@@ -1,0 +1,38 @@
+<mat-toolbar class="nav toolbar__grid">
+  <button
+    aria-label="menu button"
+    type="button"
+    mat-icon-button
+    (click)="emitToggleSideNav()"
+  >
+    <mat-icon>{{ isActiveSideNav ? Icons.Close : Icons.Menu}}</mat-icon>
+  </button>
+  <span class="brand__name" (click)="navigateToHomePage()">NFT Series</span>
+  <div class="toolbar__icons">
+    <button
+      aria-label="Connect wallet"
+      type="button"
+      mat-flat-button
+      color="accent"
+      class="connect__wallet__button"
+      (click)="connectToMetaMask()"
+    >
+      Connect wallet
+      <mat-icon>{{Icons.Wallet}}</mat-icon>
+    </button>
+
+    {{metaAddress$ | async}}
+
+    <button
+      aria-label="cart button"
+      mat-flat-button
+      [matBadge]="totalCartItems$ | async"
+      [matBadgeHidden]="(totalCartItems$ | async) === 0"
+      matBadgeSize="small"
+      class="cart__button"
+      (click)="openCart()"
+    >
+      <mat-icon class="material-icons-outlined">{{Icons.ShoppingCart}}</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

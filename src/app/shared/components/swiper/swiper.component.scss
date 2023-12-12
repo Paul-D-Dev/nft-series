@@ -1,0 +1,5 @@
+swiper-container::part(button-next), swiper-container::part(button-prev) {
+  background-color: var(--swiper-navigation-bg-color);
+  width: var(--swiper-navigation-size);
+  border-radius: 50%;
+}

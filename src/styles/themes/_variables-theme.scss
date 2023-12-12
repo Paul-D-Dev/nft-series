@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $background: map.get($color-config, "background");
+  $foreground: map.get($color-config, "foreground");
+
+  --clr-text: #{mat.get-color-from-palette($foreground, "text")};
+  --swiper-navigation-color: #{mat.get-color-from-palette($foreground, "base")};
+  --swiper-navigation-bg-color: #{mat.get-color-from-palette($background, "status-bar")};
+  --bg-color: #{mat.get-color-from-palette($background, "background")};
+  --divider-color: #{mat.get-color-from-palette($foreground, "divider")};
+  --color-icon: #{mat.get-color-from-palette($foreground, "icon")};
+
+}

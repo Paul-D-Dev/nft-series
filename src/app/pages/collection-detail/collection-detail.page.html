@@ -1,0 +1,172 @@
+<div class="cd__wrapper">
+
+  <header>
+    <div class="cd__banner">
+      <img [src]="collectionDetail?.imgBanner" [alt]="'Banner ' + collectionDetail?.name">
+    </div>
+
+    <div class="container">
+
+      <div class="cd__header">
+        <div class="cd__avatar">
+          <img [src]="collectionDetail?.imgAvatar" [alt]="'Avatar ' + collectionDetail?.name">
+        </div>
+
+        <div class="cd__media">
+          <a mat-icon-button>
+            <mat-icon>{{Icons.Share}}</mat-icon>
+          </a>
+          <button mat-icon-button>
+            <mat-icon>{{Icons.MoreHoriz}}</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <section class="cd__information">
+        <h1>{{collectionDetail?.name}}</h1>
+
+        <ul>
+          <li>Director <strong>Tod Browning</strong></li>
+          <li>Released <strong>1932</strong></li>
+          <li>Country <strong>USA</strong></li>
+        </ul>
+
+        <p class="cd__information__description">
+          {{collectionDetail?.description}}
+        </p>
+      </section>
+    </div>
+  </header>
+
+
+  <mat-tab-group [mat-stretch-tabs]="false" class="cd__tab__group container">
+    <mat-tab label="Items" class="cd__tab cd__tab__items">
+      <header class="cd__tab__items__header">
+        <button mat-icon-button (click)="toggleFilters()">
+          <mat-icon>{{Icons.FilterList}}</mat-icon>
+        </button>
+
+        <div class="field__search">
+          <mat-icon>search</mat-icon>
+          <input name="q" type="search" placeholder="Search by name"/>
+        </div>
+
+        <button mat-icon-button>
+          <mat-icon>{{Icons.SwapVert}}</mat-icon>
+        </button>
+      </header>
+
+      <mat-drawer-container class="cd__tab__items__container">
+        <mat-drawer mode="side" [opened]="isOpenedFilters" class="cd__tab__items__filters">
+
+          <mat-accordion class="example-headers-align" multi displayMode="flat">
+            <mat-expansion-panel class="mat-elevation-z">
+
+              <mat-expansion-panel-header>
+                <mat-panel-title>Status</mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-chip-listbox
+                aria-label="Status selection"
+                [multiple]="true"
+              >
+                <mat-chip-option selected>All</mat-chip-option>
+                <mat-chip-option>Listed</mat-chip-option>
+                <mat-chip-option>On auction</mat-chip-option>
+                <mat-chip-option>New</mat-chip-option>
+                <mat-chip-option>Has offers</mat-chip-option>
+              </mat-chip-listbox>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="mat-elevation-z">
+
+              <mat-expansion-panel-header>
+                <mat-panel-title>Price</mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <form class="price__form">
+                <mat-form-field subscriptSizing="dynamic">
+                  <mat-select value="eth">
+                    <mat-option value="eth">ETH</mat-option>
+                    <mat-option value="sol">SOL</mat-option>
+                    <mat-option value="pol">POL</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <div class="price__range">
+                  <mat-form-field subscriptSizing="dynamic">
+                    <mat-label>Min</mat-label>
+                    <input type="tel" matInput>
+                  </mat-form-field>
+
+                  <span>to</span>
+
+                  <mat-form-field subscriptSizing="dynamic">
+                    <mat-label>Max</mat-label>
+                    <input type="tel" matInput>
+                  </mat-form-field>
+                </div>
+
+                <button
+                  mat-flat-button
+                  color="accent"
+                  type="submit"
+                >
+                  Apply
+                </button>
+
+              </form>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="mat-elevation-z">
+
+              <mat-expansion-panel-header>
+                <mat-panel-title>Currency</mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="filter__currency">
+                <mat-checkbox>ETH</mat-checkbox>
+                <mat-checkbox>WETH</mat-checkbox>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+        </mat-drawer>
+
+        <mat-drawer-content class="cd__tab__items__main">
+
+          <section class="section__grid" [class.grid-reduced-columns]="isOpenedFilters">
+            <ng-container *ngFor="let cardToBuy of cardToBuyList">
+              <app-card-to-buy
+                [cardToBuy]="cardToBuy"
+                (addToCart)="onAddToCart($event)"
+              ></app-card-to-buy>
+            </ng-container>
+          </section>
+
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </mat-tab>
+    <mat-tab label="Offers" class="cd__tab"></mat-tab>
+    <mat-tab label="Casting" class="cd__tab">
+      <section class="cd__tab__content__casting">
+        <!--        Replace with swiper -->
+        <div class="casting__card" *ngFor="let casting of collectionDetail?.casting">
+          <header class="casting__card__header">
+            <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"
+                 [alt]="casting.actor">
+          </header>
+          <div class="casting__card__details">
+            <span>{{casting.actor}}</span>
+            <span>{{casting.character}}</span>
+          </div>
+        </div>
+      </section>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+
+
+

@@ -1,0 +1,128 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul {
+  padding-inline-start: unset;
+}
+
+li {
+  list-style-type: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--clr-text);
+}
+
+.toolbar__grid {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+}
+
+.toolbar__icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container {
+  margin-inline: auto;
+  width: min(90%, 152rem);
+}
+
+.section__grid {
+  &.grid-reduced-columns {
+    --template-reduced-columns: 1;
+    @media (max-width: 40rem) {
+      --template-reduced-columns: 1.5;
+    }
+  }
+
+  --template-column-gutters: 16px;
+  --template-columns: 1;
+  --template-reduced-columns: 0;
+  --template-reduced-columns-multiplier: 2;
+
+  display: grid;
+  gap: var(--template-column-gutters);
+  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat( calc(var(--template-columns) - (var(--template-reduced-columns) * var(--template-reduced-columns-multiplier))), minmax(0, 1fr) );
+
+  @media (min-width: 20rem) {
+    --template-columns: 2;
+  }
+  @media (min-width: 30rem) {
+    --template-columns: 3;
+  }
+  @media (min-width: 50rem) {
+    --template-columns: 4;
+  }
+  @media (min-width: 60rem) {
+    --template-columns: 5;
+  }
+  @media (min-width: 70rem) {
+    --template-reduced-columns: 1;
+    --template-columns: 5;
+  }
+  @media (min-width: 80rem) {
+    --template-columns: 6;
+  }
+  @media (min-width: 90rem) {
+    --template-columns: 7;
+  }
+  @media (min-width: 100rem) {
+    --template-columns: 8;
+  }
+  @media (min-width: 110rem) {
+    --template-columns: 9;
+  }
+  @media (min-width: 120rem) {
+    --template-columns: 10;
+  }
+  @media (min-width: 130rem) {
+    --template-columns: 11;
+  }
+  @media (min-width: 140rem) {
+    --template-columns: 12;
+  }
+}
+
+
+.cd__tab__group {
+  & .mat-mdc-tab-body {
+    padding-block-start: 1.5rem;
+    padding-block-end: 1rem;
+  }
+
+  & .mat-mdc-tab-body-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.mat-accordion {
+  .mat-expansion-panel {
+    border-radius: 12px !important
+  }
+}
+

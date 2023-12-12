@@ -1,0 +1,29 @@
+<mat-card class="card-buy" *ngIf="cardToBuy">
+
+  <div class="card-buy__image__container">
+    <img mat-card-image [src]="cardToBuy.img.src" [alt]="cardToBuy.img.alt">
+  </div>
+
+  <mat-card-content class="card-buy__content">
+    <span>{{cardToBuy.title}} #{{cardToBuy.idListing}}</span>
+    <span>{{cardToBuy.price}} {{cardToBuy.currency}}</span>
+    <span *ngIf="cardToBuy.lastSale">
+        Last sale: {{cardToBuy.lastSale.price}} {{cardToBuy.lastSale.currency}}
+    </span>
+  </mat-card-content>
+
+  <mat-card-actions class="card-buy__actions" [hidden]="true">
+    <button mat-flat-button color="accent" aria-disabled="true" tabindex="-1">Buy now</button>
+
+    <button
+      mat-flat-button
+      class="shopping__cart"
+      color="accent"
+      aria-disabled="true"
+      tabindex="-1"
+      (click)="addToCart.emit(cardToBuy)"
+    >
+      <mat-icon class="material-icons-outlined">shopping_cart</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

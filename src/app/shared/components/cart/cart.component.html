@@ -1,0 +1,64 @@
+<!-- use ngIf=isOpened to trigger :leave transition -->
+<aside @slideInOut *ngIf="isOpened" class="cart">
+  <ng-container *ngrxLet="cartItems$ as cart">
+
+    <header class="cart__header">
+      <h2>Your cart</h2>
+      <button mat-icon-button (click)="closeCart()">
+        <mat-icon>{{Icons.Close}}</mat-icon>
+      </button>
+    </header>
+
+    <main class="cart__main">
+      <ng-container *ngIf="cart.length > 0; else noItemsList">
+        <div class="cart__main__header">
+
+          <span>{{cart.length}} items</span>
+          <button mat-button (click)="clearCart()">Clear all</button>
+        </div>
+
+        <mat-list class="cart__main__list">
+          <mat-list-item class="cart__main__list__item" lines="3" *ngFor="let item of cart">
+            <div matListItemAvatar></div>
+            <span matListItemTitle class="cart__main__list__item__title">{{item.title}} {{item.idListing}}</span>
+            <ul matListItemLine class="cart__main__list__item__details">
+              <li>{{item.creator}}</li>
+              <li>{{item.price}} {{item.currency}}</li>
+              <li>Creator earnings: 5%</li>
+            </ul>
+            <div matListItemMeta class="cart__main__list__action">
+              <button mat-icon-button (click)="onRemoveItemCart(item)">
+                <mat-icon>{{Icons.Delete}}</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </ng-container>
+
+      <ng-template #noItemsList>
+        <div class="cart__main__empty">
+          Add items to get started.
+        </div>
+      </ng-template>
+
+
+    </main>
+
+    <footer class="cart__footer">
+      <div *ngIf="cart.length > 0" class="cart__footer__price">
+        <span class="bold">Total price</span>
+        <div class="cart__footer__price__currencies">
+          <span class="bold">{{totalCart$ | async}} ETH</span>
+          <span>$1 116,80</span>
+        </div>
+      </div>
+      <button
+        mat-flat-button
+        color="accent"
+        [disabled]="cart.length === 0"
+      >
+        Complete purchase
+      </button>
+    </footer>
+  </ng-container>
+</aside>

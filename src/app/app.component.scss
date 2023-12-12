@@ -1,0 +1,22 @@
+.drawer__content {
+  height: calc(100dvh - var(--nav-bar-height));
+
+  .main__wrapper {
+    height: inherit;
+  }
+}
+
+.drawer__sidenav {
+  width: 100dvw;
+
+  .mdc-list-item--with-leading-icon .mdc-list-item__start {
+    margin-right: 1rem !important;
+  }
+}
+
+
+@media screen and (min-width: 37.5rem) {
+  .drawer__sidenav {
+    width: 20rem;
+  }
+}

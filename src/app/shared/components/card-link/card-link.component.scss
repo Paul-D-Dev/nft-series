@@ -1,0 +1,40 @@
+// TODO resizing card when responsive
+@import "mixins";
+
+.card {
+  @include card-ui;
+  margin-inline: auto;
+  transition: transform 150ms ease;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+
+
+  &__image__container {
+    max-height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+  &__content__details {
+    display: flex;
+    justify-content: space-between;
+
+    &__floor {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+}
+
+a {
+  color: var(--clr-text);
+  text-decoration: none;
+}

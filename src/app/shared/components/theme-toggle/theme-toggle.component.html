@@ -1,0 +1,9 @@
+<div class="theme__wrapper">
+  <mat-slide-toggle
+    [checked]="!!(isDarkTheme$ | async)"
+    (change)="toggleTheme($event.checked)"
+  />
+  <mat-icon *ngIf="displayIcon">
+    {{(isDarkTheme$ | async) ? Icons.DarkMode : Icons.LightMode}}
+  </mat-icon>
+</div>
